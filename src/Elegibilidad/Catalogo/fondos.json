@@ -4,7 +4,7 @@
     "nombre": "Crédito Corfo MIPYME",
     "entidad": "Corfo",
     "descripcion": "Financiamiento, leasing o factoring para fortalecer o expandir una empresa ya formalizada, con ventas anuales de hasta 100.000 UF.",
-    "url": "https://www.chileatiende.gob.cl/fichas/868",
+    "url": "https://www.corfo.gob.cl/sites/cpp/convocatoria/credito_mipyme/",
     "montoAprox": "Según el Intermediario Financiero No Bancario",
     "comoPostular": "Se solicita en cualquier momento del año a través de los Intermediarios Financieros No Bancarios (IFNB) de Corfo, en vez de un banco tradicional -- la ficha de ChileAtiende lista los IFNB y los requisitos vigentes.",
     "vigencia": "Sin convocatoria: se puede solicitar en cualquier momento del año.",
@@ -38,11 +38,15 @@
       "postulacion": {
         "enlaces": [
           {
-            "texto": "Cómo solicitarlo y lista de intermediarios (ChileAtiende)",
-            "url": "https://www.chileatiende.gob.cl/fichas/868"
+            "texto": "Crédito Corfo MIPYME en el sitio oficial de Corfo",
+            "url": "https://www.corfo.gob.cl/sites/cpp/convocatoria/credito_mipyme/"
+          },
+          {
+            "texto": "Listado de intermediarios (IFNB) de Corfo",
+            "url": "https://www.corfo.gob.cl/sites/cpp/intermediario/"
           }
         ],
-        "nota": "Se solicita en cualquier momento del año a través de un Intermediario Financiero No Bancario."
+        "nota": "Se solicita en cualquier momento del año a través de un Intermediario Financiero No Bancario: elige uno del listado de Corfo y pide la evaluación allí."
       }
     },
     "ventana": {
@@ -56,7 +60,7 @@
     "nombre": "Garantía Pro-Inversión",
     "entidad": "Corfo",
     "descripcion": "Garantía estatal que facilita el acceso a financiamiento bancario para empresas ya formalizadas, desde micro hasta grandes empresas, con ventas anuales de hasta 600.000 UF.",
-    "url": "https://www.chileatiende.gob.cl/fichas/877-garantia-pro-inversion",
+    "url": "https://www.corfo.gob.cl/sites/cpp/convocatoria/garantia_pro_inversion/",
     "montoAprox": "Según el banco",
     "comoPostular": "Se solicita en cualquier momento del año directamente en el banco, cooperativa o institución financiera donde pides el crédito: ellos aplican la garantía de Corfo para facilitar la aprobación.",
     "vigencia": "Sin convocatoria: se puede solicitar en cualquier momento del año.",
@@ -90,11 +94,15 @@
       "postulacion": {
         "enlaces": [
           {
-            "texto": "Cómo solicitarla (ChileAtiende)",
-            "url": "https://www.chileatiende.gob.cl/fichas/877-garantia-pro-inversion"
+            "texto": "Garantía Pro-Inversión en el sitio oficial de Corfo",
+            "url": "https://www.corfo.gob.cl/sites/cpp/convocatoria/garantia_pro_inversion/"
+          },
+          {
+            "texto": "Instituciones financieras participantes (listado de Corfo)",
+            "url": "https://www.corfo.gob.cl/sites/cpp/intermediario/"
           }
         ],
-        "nota": "Se solicita en el banco o institución financiera donde pides el crédito."
+        "nota": "Se solicita en el banco o institución financiera donde pides el crédito; ellos aplican la garantía de Corfo."
       }
     },
     "ventana": {
@@ -1524,11 +1532,14 @@
       }
     },
     "ventana": {
-      "tipo": "fechas",
-      "abre": "2026-07-01",
+      "tipo": "fia",
+      "abre": "2026-07-28",
       "cierra": "2026-09-08",
       "verificado": "2026-10-19",
-      "nota": "Convocatoria Nacional 2026, Línea 3"
+      "claves": [
+        "linea-3"
+      ],
+      "nota": "API pública de FIA (convocatorias); respaldo: fechas del catálogo"
     }
   }
 ]

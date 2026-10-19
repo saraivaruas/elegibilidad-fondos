@@ -191,3 +191,49 @@ public class CalendarioSercotecTests
     public void Sin_calendario_el_estado_es_desconocido_y_no_cerrado() =>
         Assert.Equal(EstadoPostulacion.Desconocida, CalendarioSercotec.Resolver(V("sercotec-crece"), null).Estado);
 }
+
+
+public class ConvocatoriasFiaTests
+{
+    // Recorte de la respuesta real de https://www.fia.cl/wp-json/wp/v2/convocatorias (19-oct-2026).
+    private const string Json = """
+        [{"slug":"convocatoria-nacional-de-proyectos-de-innovacion-de-interes-privado-2026-linea-3-trl7-a-trl8",
+          "link":"https://www.fia.cl/convocatorias/linea-3/",
+          "title":{"rendered":"Convocatoria Nacional de Proyectos de Innovaci&#243;n de Inter&#233;s Privado 2026."},
+          "content":{"rendered":"<h3>OBJETIVO</h3><p>Apoyar la implementaci&oacute;n.</p><h3>CALENDARIZACI&Oacute;N</h3><p>INICIO: <strong>28</strong> de julio de 2026</p><p>CIERRE: <strong>27</strong> de agosto de 2026 a las <strong>15:00</strong> horas</p><p>CIERRE: <strong>08</strong> de septiembre de 2026 a las 15:00 horas</p><h3>FORMA DE POSTULACI&Oacute;N</h3><p>A trav&eacute;s del siguiente link: <a href=\"https://convocatoria.fia.cl/\">https://convocatoria.fia.cl/</a></p>"}},
+         {"slug":"licitacion-gira","link":"https://www.fia.cl/convocatorias/gira/","title":{"rendered":"Licitaci&oacute;n gira"},"content":{"rendered":"<p>Sin fechas</p>"}}]
+        """;
+
+    private static readonly MotorElegibilidad Motor = CatalogoFondos.Cargar();
+    private static Ventana V => Motor.Catalogo.First(p => p.Id == "fia-proyectos-innovacion").Ventana!;
+
+    [Fact]
+    public void Lee_inicio_y_el_ultimo_cierre_y_el_enlace_de_postulacion()
+    {
+        var c = ConvocatoriasFia.Parsear(Json).First();
+        Assert.Equal(new DateOnly(2026, 7, 28), c.Inicio);
+        Assert.Equal(new DateOnly(2026, 9, 8), c.Cierre);          // vale el cierre ampliado
+        Assert.Equal("https://convocatoria.fia.cl/", c.UrlPostulacion);
+    }
+
+    [Theory]
+    [InlineData("2026-07-27", EstadoPostulacion.Proxima)]
+    [InlineData("2026-09-08", EstadoPostulacion.Abierta)]          // el día del cierre aún se puede
+    [InlineData("2026-09-09", EstadoPostulacion.Cerrada)]
+    public void Estado_segun_la_fecha(string hoy, EstadoPostulacion esperado) =>
+        Assert.Equal(esperado, ConvocatoriasFia.Resolver(V, ConvocatoriasFia.Parsear(Json), DateOnly.Parse(hoy)).Estado);
+
+    [Fact]
+    public void Abierta_entrega_el_enlace_exacto()
+    {
+        var r = ConvocatoriasFia.Resolver(V, ConvocatoriasFia.Parsear(Json), new DateOnly(2026, 8, 1));
+        Assert.Equal("https://convocatoria.fia.cl/", r.Enlaces[0].Url);
+    }
+
+    [Fact]
+    public void Sin_consulta_o_sin_convocatoria_es_desconocido_no_cerrado()
+    {
+        Assert.Equal(EstadoPostulacion.Desconocida, ConvocatoriasFia.Resolver(V, null, new DateOnly(2026, 10, 19)).Estado);
+        Assert.Equal(EstadoPostulacion.Desconocida, ConvocatoriasFia.Resolver(V, ConvocatoriasFia.Parsear("[]"), new DateOnly(2026, 10, 19)).Estado);
+    }
+}

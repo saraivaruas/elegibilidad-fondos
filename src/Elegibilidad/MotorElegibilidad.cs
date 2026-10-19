@@ -141,7 +141,7 @@ public enum EstadoPostulacion { Abierta, Proxima, Cerrada, Permanente, Desconoci
 
 /// <summary>
 /// Cuándo se puede postular. <paramref name="Tipo"/>: «permanente» (todo el año), «fechas» (una convocatoria con apertura y cierre conocidos, o la última cerrada)
-/// o «externo» (la convocatoria cambia por región y se consulta a la fuente oficial, por ejemplo el calendario de Sercotec).
+/// o «externo» (la convocatoria cambia por región y se consulta a la fuente oficial, por ejemplo el calendario de Sercotec) o «fia» (se consulta la API de FIA y, si no responde, se usan las fechas del catálogo).
 /// <paramref name="Claves"/> y <paramref name="Excluir"/> sirven para reconocer el programa en ese calendario. <paramref name="Verificado"/> es la fecha en que se comprobó.
 /// </summary>
 public record Ventana(string Tipo, string? Abre = null, string? Cierra = null, string? Verificado = null, string? Nota = null, List<string>? Claves = null, List<string>? Excluir = null)
@@ -150,7 +150,8 @@ public record Ventana(string Tipo, string? Abre = null, string? Cierra = null, s
     public EstadoPostulacion Estado(DateOnly hoy)
     {
         if (Tipo == "permanente") return EstadoPostulacion.Permanente;
-        if (Tipo != "fechas") return EstadoPostulacion.Desconocida;
+        // «fia» usa estas mismas fechas solo como respaldo cuando no se puede consultar la API de FIA.
+        if (Tipo != "fechas" && Tipo != "fia") return EstadoPostulacion.Desconocida;
         if (DateOnly.TryParse(Abre, out var a) && hoy < a) return EstadoPostulacion.Proxima;
         if (DateOnly.TryParse(Cierra, out var c)) return hoy <= c ? EstadoPostulacion.Abierta : EstadoPostulacion.Cerrada;
         return EstadoPostulacion.Desconocida;

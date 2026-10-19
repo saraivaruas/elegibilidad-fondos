@@ -6,6 +6,10 @@ Formato basado en [Keep a Changelog](https://keepachangelog.com/es-ES/1.1.0/); v
 
 ## [0.3.0] - 2026-10-19
 ### Agregado
+- `ConvocatoriasFia`: lee la API pública de FIA (`wp-json/wp/v2/convocatorias`) y obtiene el inicio, el último cierre y el enlace exacto de postulación.
+### Cambiado
+- Crédito Corfo MIPYME y Garantía Pro-Inversión apuntan al sitio oficial de Corfo (y su listado de intermediarios) en vez de ChileAtiende.
+### Agregado
 - `CalendarioSercotec`: lee el calendario oficial de Sercotec y resuelve el plazo de cada programa, con el enlace exacto de «Postular».
 - `Ventana` por programa: permanente, por fechas o consultada a la fuente oficial (calendario de Sercotec), para marcar «postulación cerrada».
 - Enlace oficial para postular en la ficha de cada programa (`Postulacion`), con nota sobre convocatorias regionales o cerradas.

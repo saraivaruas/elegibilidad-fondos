@@ -14,7 +14,7 @@ Se usa dentro de DataHub Providencia (herramienta «Diagnóstico») y también s
 - `Radar(perfil)`: todos los programas ordenados (cumple, por confirmar, descartados) con puntaje de afinidad y lo que falta.
 - `QueDesbloquea(perfil)`: qué arreglo habilita más programas.
 - Una regla puede aplicar solo en ciertos casos (`cuando`), por ejemplo las ventas mínimas de Crece según la antigüedad.
-- **Plazo de postulación**: cada programa trae una `Ventana` (permanente, por fechas o consultada a la fuente). `CalendarioSercotec` lee el calendario público de Sercotec y entrega, por programa, si hay convocatorias abiertas con el enlace exacto de «Postular»; si no se pudo consultar, el estado es «desconocido», nunca «cerrado».
+- **Plazo de postulación**: cada programa trae una `Ventana` (permanente, por fechas o consultada a la fuente). `CalendarioSercotec` lee el calendario público de Sercotec y `ConvocatoriasFia` la API pública de convocatorias de FIA (fechas reales y enlace de postulación) y entrega, por programa, si hay convocatorias abiertas con el enlace exacto de «Postular»; si no se pudo consultar, el estado es «desconocido», nunca «cerrado».
 - **Ficha completa** de cada programa (proceso, plazos, criterios de evaluación, gastos y enlace oficial) para mostrarla dentro de tu aplicación.
 
 ## Uso

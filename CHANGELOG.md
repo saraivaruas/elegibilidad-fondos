@@ -4,6 +4,11 @@ Propietario y autor: Jorge Luis Saraiva Ruas ([@saraivaruas](https://github.com/
 
 Formato basado en [Keep a Changelog](https://keepachangelog.com/es-ES/1.1.0/); versiones según [SemVer](https://semver.org/lang/es/).
 
+## [0.3.0] - 2026-10-19
+### Agregado
+- `Ventana` por programa: permanente, por fechas o consultada a la fuente oficial (calendario de Sercotec), para marcar «postulación cerrada».
+- Enlace oficial para postular en la ficha de cada programa (`Postulacion`), con nota sobre convocatorias regionales o cerradas.
+
 ## [0.2.0] - 2026-10-19
 ### Agregado
 - Ficha de cada programa para mostrarla completa dentro de la plataforma: resumen, proceso, plazos, criterios de evaluación, gastos y notas, con su fuente. Fichas con criterios de evaluación: Sercotec (Semilla Emprende, Abeja, Pioneras, Crece, Crece Sostenible); el resto resume lo que informa la página oficial.

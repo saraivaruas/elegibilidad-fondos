@@ -20,9 +20,13 @@ public class MotorTests
             Assert.True(DateOnly.TryParse(p.Revisado, out _), $"{p.Id}: fecha de revisión inválida");
             Assert.Equal(p.Reglas.Count, p.Reglas.Select(r => r.Id).Distinct().Count());
             foreach (var r in p.Reglas) Assert.StartsWith("https://", r.Fuente);
+            Assert.NotNull(p.Ventana);
             Assert.NotNull(p.Ficha);
             Assert.False(string.IsNullOrWhiteSpace(p.Ficha!.Resumen), $"{p.Id}: la ficha no tiene resumen");
             Assert.False(string.IsNullOrWhiteSpace(p.Ficha.Fuente), $"{p.Id}: la ficha no indica su fuente");
+            Assert.NotNull(p.Ficha.Postulacion);
+            Assert.NotEmpty(p.Ficha.Postulacion!.Enlaces);
+            Assert.All(p.Ficha.Postulacion.Enlaces, e => Assert.StartsWith("https://", e.Url));
         }
     }
 
@@ -113,5 +117,19 @@ public class MotorTests
     {
         const string json = """[{"id":"x","nombre":"x","entidad":"x","descripcion":"x","url":"https://x","montoAprox":"x","comoPostular":"x","vigencia":"x","revisado":"2026-01-01","reglas":[{"id":"r","campo":"c","op":"cerca","valor":1,"texto":"t","siFalla":"s","fuente":"https://x"}]}]""";
         Assert.Throws<InvalidDataException>(() => MotorElegibilidad.DesdeJson(json));
+    }
+
+    [Theory]
+    [InlineData("2026-08-04", EstadoPostulacion.Abierta)]   // el día del cierre aún se puede postular
+    [InlineData("2026-08-05", EstadoPostulacion.Cerrada)]
+    [InlineData("2026-05-01", EstadoPostulacion.Proxima)]
+    public void Ventana_por_fechas_decide_si_esta_abierta(string hoy, EstadoPostulacion esperado) =>
+        Assert.Equal(esperado, P("corfo-crea-y-valida").Ventana!.Estado(DateOnly.Parse(hoy)));
+
+    [Fact]
+    public void Programas_permanentes_siempre_estan_abiertos_y_los_externos_se_consultan_afuera()
+    {
+        Assert.Equal(EstadoPostulacion.Permanente, P("corfo-credito-mipyme").Ventana!.Estado(DateOnly.Parse("2030-01-01")));
+        Assert.Equal(EstadoPostulacion.Desconocida, P("sercotec-crece").Ventana!.Estado(DateOnly.Parse("2026-10-19")));
     }
 }

@@ -31,12 +31,19 @@ public record Ficha(
     List<string>? Documentos = null,
     List<string>? Gastos = null,
     List<string>? Notas = null,
-    string? Fuente = null);
+    string? Fuente = null,
+    Postulacion? Postulacion = null);
+
+/// <summary>Un enlace oficial para postular. El primero de la lista es el principal («Ir a postular»); los demás son de apoyo.</summary>
+public record Enlace(string Texto, string Url);
+
+/// <summary>Dónde se postula de verdad. Las convocatorias regionales (Sercotec, Súmate a Innovar) cambian de dirección en cada llamado: se enlaza la página oficial que las lista.</summary>
+public record Postulacion(List<Enlace> Enlaces, string? Nota = null);
 
 /// <summary>Un programa del catálogo. <paramref name="Revisado"/> es la fecha en que alguien comparó estas reglas con las bases oficiales: pasado un año hay que volver a revisarlas.</summary>
 public record Programa(
     string Id, string Nombre, string Entidad, string Descripcion, string Url, string MontoAprox, string ComoPostular, string Vigencia,
-    string Revisado, List<Regla> Reglas, Ficha? Ficha = null);
+    string Revisado, List<Regla> Reglas, Ficha? Ficha = null, Ventana? Ventana = null);
 
 public record ResultadoRegla(Regla Regla, Veredicto Veredicto);
 
@@ -125,5 +132,27 @@ public class MotorElegibilidad(IReadOnlyList<Programa> catalogo)
             cuenta[f.SiFalla] = (f.SiFalla, cuenta.GetValueOrDefault(f.SiFalla).N + 1);
         }
         return cuenta.Values.OrderByDescending(x => x.N).Select(x => (x.SiFalla, x.N)).ToList();
+    }
+}
+
+
+/// <summary>Estado de la postulación de un programa en una fecha dada.</summary>
+public enum EstadoPostulacion { Abierta, Proxima, Cerrada, Permanente, Desconocida }
+
+/// <summary>
+/// Cuándo se puede postular. <paramref name="Tipo"/>: «permanente» (todo el año), «fechas» (una convocatoria con apertura y cierre conocidos, o la última cerrada)
+/// o «externo» (la convocatoria cambia por región y se consulta a la fuente oficial, por ejemplo el calendario de Sercotec).
+/// <paramref name="Claves"/> y <paramref name="Excluir"/> sirven para reconocer el programa en ese calendario. <paramref name="Verificado"/> es la fecha en que se comprobó.
+/// </summary>
+public record Ventana(string Tipo, string? Abre = null, string? Cierra = null, string? Verificado = null, string? Nota = null, List<string>? Claves = null, List<string>? Excluir = null)
+{
+    /// <summary>Estado según las fechas del catálogo. Para el tipo «externo» devuelve <see cref="EstadoPostulacion.Desconocida"/>: lo resuelve quien consulta la fuente.</summary>
+    public EstadoPostulacion Estado(DateOnly hoy)
+    {
+        if (Tipo == "permanente") return EstadoPostulacion.Permanente;
+        if (Tipo != "fechas") return EstadoPostulacion.Desconocida;
+        if (DateOnly.TryParse(Abre, out var a) && hoy < a) return EstadoPostulacion.Proxima;
+        if (DateOnly.TryParse(Cierra, out var c)) return hoy <= c ? EstadoPostulacion.Abierta : EstadoPostulacion.Cerrada;
+        return EstadoPostulacion.Desconocida;
     }
 }

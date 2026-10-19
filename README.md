@@ -46,5 +46,11 @@ Quedan fuera, a propósito o por falta de datos confiables:
 
 Los porcentajes de aporte propio y el foco regional están en las bases de cada convocatoria, no en las fichas: el motor no los evalúa.
 
+## Aviso importante
+Este proyecto **orienta, no garantiza**. Los requisitos vienen de páginas públicas de cada programa y cambian en cada convocatoria; el resultado del motor no asegura que una postulación sea admisible ni constituye asesoría. Verifica siempre las bases oficiales vigentes antes de postular. Cada regla indica su fuente y cada programa su fecha de revisión.
+
+## Contribuir y seguridad
+Ver [CONTRIBUTING.md](CONTRIBUTING.md), [CODE_OF_CONDUCT.md](CODE_OF_CONDUCT.md) y [SECURITY.md](SECURITY.md). Historial de cambios en [CHANGELOG.md](CHANGELOG.md).
+
 ## Licencia
-Por definir por Inge Innova antes de publicarlo.
+[MIT](LICENSE) © 2026 Inge Innova. Los datos del catálogo resumen información pública de Sercotec, Corfo, ANID, FIA y Google; los nombres de los programas pertenecen a sus respectivas instituciones, con las que este proyecto no tiene relación.

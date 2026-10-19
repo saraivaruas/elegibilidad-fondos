@@ -38,15 +38,19 @@
       "postulacion": {
         "enlaces": [
           {
-            "texto": "Crédito Corfo MIPYME en el sitio oficial de Corfo",
+            "texto": "Elegir un intermediario (IFNB) y pedir la evaluación: listado oficial de Corfo",
+            "url": "https://www.corfo.gob.cl/sites/cpp/intermediarios_financieros_no_bancarios/"
+          },
+          {
+            "texto": "Página oficial del programa en Corfo",
             "url": "https://www.corfo.gob.cl/sites/cpp/convocatoria/credito_mipyme/"
           },
           {
-            "texto": "Listado de intermediarios (IFNB) de Corfo",
-            "url": "https://www.corfo.gob.cl/sites/cpp/intermediario/"
+            "texto": "Preguntas frecuentes (PDF de Corfo)",
+            "url": "https://www.corfo.gob.cl/sites/cpp/wp-content/uploads/2025/04/creditocorfomipymepreguntasfrecuentes.pdf"
           }
         ],
-        "nota": "Se solicita en cualquier momento del año a través de un Intermediario Financiero No Bancario: elige uno del listado de Corfo y pide la evaluación allí."
+        "nota": "Este programa no tiene un formulario de postulación en línea: se pide en el intermediario financiero que elijas (crédito, leasing o factoring). Corfo aconseja cotizar en varias entidades antes de firmar."
       },
       "textoOficialUrl": "https://www.corfo.gob.cl/sites/cpp/convocatoria/credito_mipyme/"
     },
@@ -95,15 +99,23 @@
       "postulacion": {
         "enlaces": [
           {
-            "texto": "Garantía Pro-Inversión en el sitio oficial de Corfo",
+            "texto": "Elegir una institución financiera participante: listado oficial de Corfo",
+            "url": "https://www.corfo.gob.cl/sites/cpp/intermediario?at=1456407918101"
+          },
+          {
+            "texto": "Página oficial del programa en Corfo",
             "url": "https://www.corfo.gob.cl/sites/cpp/convocatoria/garantia_pro_inversion/"
           },
           {
-            "texto": "Instituciones financieras participantes (listado de Corfo)",
-            "url": "https://www.corfo.gob.cl/sites/cpp/intermediario/"
+            "texto": "Tabla de cobertura de la garantía (PDF de Corfo)",
+            "url": "https://www.corfo.gob.cl/sites/cpp/wp-content/uploads/2025/03/proinversiontabladecobertura0.pdf"
+          },
+          {
+            "texto": "Preguntas frecuentes (PDF de Corfo)",
+            "url": "https://www.corfo.gob.cl/sites/cpp/wp-content/uploads/2025/03/proinversionpreguntasfrecuentes0.pdf"
           }
         ],
-        "nota": "Se solicita en el banco o institución financiera donde pides el crédito; ellos aplican la garantía de Corfo."
+        "nota": "Este programa no tiene un formulario de postulación en línea: la garantía se solicita en el banco o institución financiera donde pides el crédito, que evalúa qué porcentaje cubre."
       },
       "textoOficialUrl": "https://www.corfo.gob.cl/sites/cpp/convocatoria/garantia_pro_inversion/"
     },

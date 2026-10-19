@@ -1,0 +1,856 @@
+[
+  {
+    "id": "corfo-credito-mipyme",
+    "nombre": "Crédito Corfo MIPYME",
+    "entidad": "Corfo",
+    "descripcion": "Financiamiento, leasing o factoring para fortalecer o expandir una empresa ya formalizada, con ventas anuales de hasta 100.000 UF.",
+    "url": "https://www.chileatiende.gob.cl/fichas/868",
+    "montoAprox": "Según el Intermediario Financiero No Bancario",
+    "comoPostular": "Se solicita en cualquier momento del año a través de los Intermediarios Financieros No Bancarios (IFNB) de Corfo, en vez de un banco tradicional -- la ficha de ChileAtiende lista los IFNB y los requisitos vigentes.",
+    "vigencia": "Sin convocatoria: se puede solicitar en cualquier momento del año.",
+    "revisado": "2026-10-13",
+    "reglas": [
+      {
+        "id": "formalizado",
+        "campo": "iniciado_actividades",
+        "op": "eq",
+        "valor": 1,
+        "texto": "Empresa formalizada ante el SII",
+        "siFalla": "Inicia actividades ante el SII: es para negocios ya formalizados.",
+        "fuente": "https://www.chileatiende.gob.cl/fichas/868"
+      },
+      {
+        "id": "ventas-tope",
+        "campo": "ventas_uf",
+        "op": "lte",
+        "valor": 100000,
+        "texto": "Ventas anuales de hasta 100.000 UF",
+        "siFalla": "Tus ventas superan el tope de 100.000 UF de este crédito; revisa Garantía Pro-Inversión.",
+        "fuente": "https://www.chileatiende.gob.cl/fichas/868"
+      }
+    ]
+  },
+  {
+    "id": "corfo-garantia-pro-inversion",
+    "nombre": "Garantía Pro-Inversión",
+    "entidad": "Corfo",
+    "descripcion": "Garantía estatal que facilita el acceso a financiamiento bancario para empresas ya formalizadas, desde micro hasta grandes empresas, con ventas anuales de hasta 600.000 UF.",
+    "url": "https://www.chileatiende.gob.cl/fichas/877-garantia-pro-inversion",
+    "montoAprox": "Según el banco",
+    "comoPostular": "Se solicita en cualquier momento del año directamente en el banco, cooperativa o institución financiera donde pides el crédito: ellos aplican la garantía de Corfo para facilitar la aprobación.",
+    "vigencia": "Sin convocatoria: se puede solicitar en cualquier momento del año.",
+    "revisado": "2026-10-13",
+    "reglas": [
+      {
+        "id": "formalizado",
+        "campo": "iniciado_actividades",
+        "op": "eq",
+        "valor": 1,
+        "texto": "Empresa formalizada ante el SII",
+        "siFalla": "Inicia actividades ante el SII: es para negocios ya formalizados.",
+        "fuente": "https://www.chileatiende.gob.cl/fichas/877-garantia-pro-inversion"
+      },
+      {
+        "id": "ventas-tope",
+        "campo": "ventas_uf",
+        "op": "lte",
+        "valor": 600000,
+        "texto": "Ventas anuales de hasta 600.000 UF",
+        "siFalla": "Tus ventas superan el tope de 600.000 UF de esta garantía.",
+        "fuente": "https://www.chileatiende.gob.cl/fichas/877-garantia-pro-inversion"
+      }
+    ]
+  },
+  {
+    "id": "google-cloud-start",
+    "nombre": "Google for Startups Cloud · Start",
+    "entidad": "Google",
+    "descripcion": "Créditos de Google Cloud para empresas recién constituidas, sin financiamiento institucional.",
+    "url": "https://cloud.google.com/startup/apply",
+    "montoAprox": "Hasta US$2.000",
+    "comoPostular": "Se llena un formulario de interés en cloud.google.com/startup/apply; Google Cloud evalúa y se pone en contacto para continuar el proceso. No hay un formulario separado por nivel (Start/Scale): el mismo formulario deriva al nivel que corresponda según la etapa de la empresa.",
+    "vigencia": "Sin fecha límite: es un formulario de interés permanente, no una convocatoria por ciclos. La aprobación y el nivel (Start o Scale) quedan a criterio de Google Cloud, no están garantizados.",
+    "revisado": "2026-10-13",
+    "reglas": [
+      {
+        "id": "constituida",
+        "campo": "iniciado_actividades",
+        "op": "eq",
+        "valor": 1,
+        "texto": "Empresa ya constituida",
+        "siFalla": "Los programas de Google exigen una empresa ya constituida.",
+        "fuente": "https://cloud.google.com/startup/apply"
+      },
+      {
+        "id": "sin-capital",
+        "campo": "capital_riesgo",
+        "op": "eq",
+        "valor": 0,
+        "texto": "Sin financiamiento de capital de riesgo",
+        "siFalla": "Ya recibiste financiamiento de capital: revisa el nivel Scale.",
+        "fuente": "https://cloud.google.com/startup/apply"
+      },
+      {
+        "id": "menos-5-anios",
+        "campo": "antiguedad_meses",
+        "op": "lt",
+        "valor": 60,
+        "texto": "Menos de 5 años desde el inicio de actividades",
+        "siFalla": "Start exige menos de 5 años desde que iniciaste actividades.",
+        "fuente": "https://cloud.google.com/startup/apply"
+      }
+    ]
+  },
+  {
+    "id": "google-cloud-scale",
+    "nombre": "Google for Startups Cloud · Scale",
+    "entidad": "Google",
+    "descripcion": "Créditos de Google Cloud para startups con financiamiento de capital (de semilla a Serie A).",
+    "url": "https://cloud.google.com/startup/apply",
+    "montoAprox": "Hasta US$200.000 (US$350.000 si usa IA)",
+    "comoPostular": "Mismo formulario de interés que el nivel Start, en cloud.google.com/startup/apply; Google Cloud asigna el nivel según la etapa y el financiamiento recibido por la empresa.",
+    "vigencia": "Sin fecha límite: es un formulario de interés permanente, no una convocatoria por ciclos. La aprobación y el nivel (Start o Scale) quedan a criterio de Google Cloud, no están garantizados.",
+    "revisado": "2026-10-13",
+    "reglas": [
+      {
+        "id": "constituida",
+        "campo": "iniciado_actividades",
+        "op": "eq",
+        "valor": 1,
+        "texto": "Empresa ya constituida",
+        "siFalla": "Los programas de Google exigen una empresa ya constituida.",
+        "fuente": "https://cloud.google.com/startup/apply"
+      },
+      {
+        "id": "con-capital",
+        "campo": "capital_riesgo",
+        "op": "eq",
+        "valor": 1,
+        "texto": "Con financiamiento de capital (semilla a Serie A)",
+        "siFalla": "Scale exige haber recibido financiamiento de capital de riesgo: revisa el nivel Start.",
+        "fuente": "https://cloud.google.com/startup/apply"
+      },
+      {
+        "id": "menos-10-anios",
+        "campo": "antiguedad_meses",
+        "op": "lt",
+        "valor": 120,
+        "texto": "Menos de 10 años desde el inicio de actividades",
+        "siFalla": "Scale exige menos de 10 años desde que iniciaste actividades.",
+        "fuente": "https://cloud.google.com/startup/apply"
+      }
+    ]
+  },
+  {
+    "id": "sercotec-semilla-emprende",
+    "nombre": "Capital Semilla Emprende",
+    "entidad": "Sercotec",
+    "descripcion": "Subsidio no reembolsable para personas que quieren formalizar un negocio nuevo (sin inicio de actividades en primera categoría).",
+    "url": "https://www.sercotec.cl/capital-semilla-emprende",
+    "montoAprox": "$3.500.000",
+    "comoPostular": "Postulación en línea en sercotec.cl durante la convocatoria de tu región. Las bases de cada convocatoria fijan el aporte propio (un porcentaje del subsidio) y el foco regional; el subsidio es neto: tú financias los impuestos del proyecto.",
+    "vigencia": "No hay una fecha fija: Sercotec abre convocatorias puntuales varias veces al año, por región. Revisa cuáles están abiertas ahora mismo en la página oficial de postulaciones abiertas.",
+    "revisado": "2026-10-19",
+    "reglas": [
+      {
+        "id": "sin-inicio-actividades",
+        "campo": "iniciado_actividades",
+        "op": "eq",
+        "valor": 0,
+        "texto": "Sin inicio de actividades en primera categoría ante el SII",
+        "siFalla": "Este programa es para quien aún no inicia actividades en primera categoría; tú ya las iniciaste (revisa Crece).",
+        "fuente": "https://www.sercotec.cl/capital-semilla-emprende"
+      },
+      {
+        "id": "mayor-edad",
+        "campo": "edad",
+        "op": "gte",
+        "valor": 18,
+        "texto": "Mayor de edad (18 años o más)",
+        "siFalla": "Debes tener 18 años o más.",
+        "fuente": "https://www.sercotec.cl/capital-semilla-emprende"
+      }
+    ]
+  },
+  {
+    "id": "sercotec-abeja-emprende",
+    "nombre": "Capital Abeja Emprende",
+    "entidad": "Sercotec",
+    "descripcion": "Subsidio no reembolsable para mujeres que quieren formalizar su negocio.",
+    "url": "https://www.sercotec.cl/capital-abeja-emprende",
+    "montoAprox": "$3.500.000",
+    "comoPostular": "Postulación en línea en sercotec.cl durante la convocatoria de tu región. Las bases de cada convocatoria fijan el aporte propio (un porcentaje del subsidio) y el foco regional; el subsidio es neto: tú financias los impuestos del proyecto.",
+    "vigencia": "No hay una fecha fija: Sercotec abre convocatorias puntuales varias veces al año, por región. Revisa cuáles están abiertas ahora mismo en la página oficial de postulaciones abiertas.",
+    "revisado": "2026-10-19",
+    "reglas": [
+      {
+        "id": "sin-inicio-actividades",
+        "campo": "iniciado_actividades",
+        "op": "eq",
+        "valor": 0,
+        "texto": "Sin inicio de actividades en primera categoría ante el SII",
+        "siFalla": "Este programa es para quien aún no inicia actividades en primera categoría; tú ya las iniciaste (revisa Crece).",
+        "fuente": "https://www.sercotec.cl/capital-abeja-emprende"
+      },
+      {
+        "id": "mayor-edad",
+        "campo": "edad",
+        "op": "gte",
+        "valor": 18,
+        "texto": "Mayor de edad (18 años o más)",
+        "siFalla": "Debes tener 18 años o más.",
+        "fuente": "https://www.sercotec.cl/capital-abeja-emprende"
+      },
+      {
+        "id": "mujer",
+        "campo": "es_mujer",
+        "op": "eq",
+        "valor": 1,
+        "texto": "Mujer (sexo registral femenino)",
+        "siFalla": "Este programa es solo para mujeres (sexo registral femenino).",
+        "fuente": "https://www.sercotec.cl/capital-abeja-emprende"
+      }
+    ]
+  },
+  {
+    "id": "sercotec-pioneras",
+    "nombre": "Capital Pioneras",
+    "entidad": "Sercotec",
+    "descripcion": "Subsidio no reembolsable para negocios nuevos liderados por mujeres en rubros donde ellas participan menos.",
+    "url": "https://www.sercotec.cl/capital-pioneras",
+    "montoAprox": "$3.500.000",
+    "comoPostular": "Postulación en línea en sercotec.cl durante la convocatoria de tu región. Las bases de cada convocatoria fijan el aporte propio (un porcentaje del subsidio) y el foco regional; el subsidio es neto: tú financias los impuestos del proyecto. Aporte propio: 3% del subsidio.",
+    "vigencia": "No hay una fecha fija: Sercotec abre convocatorias puntuales varias veces al año, por región. Revisa cuáles están abiertas ahora mismo en la página oficial de postulaciones abiertas.",
+    "revisado": "2026-10-19",
+    "reglas": [
+      {
+        "id": "sin-inicio-actividades",
+        "campo": "iniciado_actividades",
+        "op": "eq",
+        "valor": 0,
+        "texto": "Sin inicio de actividades en primera categoría ante el SII",
+        "siFalla": "Este programa es para quien aún no inicia actividades en primera categoría; tú ya las iniciaste (revisa Crece).",
+        "fuente": "https://www.sercotec.cl/capital-pioneras"
+      },
+      {
+        "id": "mayor-edad",
+        "campo": "edad",
+        "op": "gte",
+        "valor": 18,
+        "texto": "Mayor de edad (18 años o más)",
+        "siFalla": "Debes tener 18 años o más.",
+        "fuente": "https://www.sercotec.cl/capital-pioneras"
+      },
+      {
+        "id": "mujer",
+        "campo": "es_mujer",
+        "op": "eq",
+        "valor": 1,
+        "texto": "Mujer (sexo registral femenino)",
+        "siFalla": "Este programa es solo para mujeres (sexo registral femenino).",
+        "fuente": "https://www.sercotec.cl/capital-pioneras"
+      },
+      {
+        "id": "rubro",
+        "campo": "rubro_masculinizado",
+        "op": "eq",
+        "valor": 1,
+        "texto": "Proyecto en un rubro con menor participación femenina (la lista está en las bases)",
+        "siFalla": "El proyecto debe estar en uno de los rubros con menor participación femenina que fijan las bases.",
+        "fuente": "https://www.sercotec.cl/capital-pioneras"
+      },
+      {
+        "id": "al-dia",
+        "campo": "al_dia",
+        "op": "eq",
+        "valor": 1,
+        "texto": "Sin deudas laborales, previsionales ni tributarias",
+        "siFalla": "Ponte al día en tus obligaciones laborales, previsionales y tributarias.",
+        "fuente": "https://www.sercotec.cl/capital-pioneras"
+      }
+    ]
+  },
+  {
+    "id": "sercotec-semilla-modo-empleo",
+    "nombre": "Capital Semilla Modo Empleo",
+    "entidad": "Sercotec",
+    "descripcion": "Subsidio no reembolsable para nuevos negocios formales de personas jóvenes, mujeres de 30 a 54 años y adultos mayores de 55.",
+    "url": "https://www.sercotec.cl/capital-semilla-modo-empleo",
+    "montoAprox": "$3.000.000",
+    "comoPostular": "Postulación en línea en sercotec.cl durante la convocatoria de tu región. Las bases de cada convocatoria fijan el aporte propio (un porcentaje del subsidio) y el foco regional; el subsidio es neto: tú financias los impuestos del proyecto.",
+    "vigencia": "No hay una fecha fija: Sercotec abre convocatorias puntuales varias veces al año, por región. Revisa cuáles están abiertas ahora mismo en la página oficial de postulaciones abiertas.",
+    "revisado": "2026-10-19",
+    "reglas": [
+      {
+        "id": "sin-inicio-actividades",
+        "campo": "iniciado_actividades",
+        "op": "eq",
+        "valor": 0,
+        "texto": "Sin inicio de actividades en primera categoría ante el SII",
+        "siFalla": "Este programa es para quien aún no inicia actividades en primera categoría; tú ya las iniciaste (revisa Crece).",
+        "fuente": "https://www.sercotec.cl/capital-semilla-modo-empleo"
+      },
+      {
+        "id": "mayor-edad",
+        "campo": "edad",
+        "op": "gte",
+        "valor": 18,
+        "texto": "Mayor de edad (18 años o más)",
+        "siFalla": "Debes tener 18 años o más.",
+        "fuente": "https://www.sercotec.cl/capital-semilla-modo-empleo"
+      },
+      {
+        "id": "sin-cotizaciones",
+        "campo": "sin_cotizaciones_6m",
+        "op": "eq",
+        "valor": 1,
+        "texto": "Sin cotizaciones previsionales en los 6 meses previos a la convocatoria",
+        "siFalla": "No debes tener cotizaciones previsionales (dependiente, independiente o voluntaria) en los 6 meses previos al inicio de la convocatoria.",
+        "fuente": "https://www.sercotec.cl/capital-semilla-modo-empleo"
+      },
+      {
+        "id": "segmento",
+        "campo": "segmento_modo_empleo",
+        "op": "eq",
+        "valor": 1,
+        "texto": "Joven de 18 a 29 años, mujer de 30 a 54 años o persona de 55 años o más",
+        "siFalla": "Debes pertenecer a uno de los segmentos priorizados: jóvenes de 18 a 29 años, mujeres de 30 a 54 años o personas de 55 años o más.",
+        "fuente": "https://www.sercotec.cl/capital-semilla-modo-empleo"
+      }
+    ]
+  },
+  {
+    "id": "sercotec-crece",
+    "nombre": "Crece",
+    "entidad": "Sercotec",
+    "descripcion": "Subsidio no reembolsable para inversiones y gestión de micro y pequeñas empresas ya formalizadas y en marcha, y cooperativas.",
+    "url": "https://www.sercotec.cl/crece",
+    "montoAprox": "$5.000.000",
+    "comoPostular": "Postulación en línea en sercotec.cl durante la convocatoria de tu región. Las bases de cada convocatoria fijan el aporte propio (un porcentaje del subsidio) y el foco regional; el subsidio es neto: tú financias los impuestos del proyecto.",
+    "vigencia": "No hay una fecha fija: Sercotec abre convocatorias puntuales varias veces al año, por región. Revisa cuáles están abiertas ahora mismo en la página oficial de postulaciones abiertas.",
+    "revisado": "2026-10-19",
+    "reglas": [
+      {
+        "id": "formalizado",
+        "campo": "iniciado_actividades",
+        "op": "eq",
+        "valor": 1,
+        "texto": "Inicio de actividades en primera categoría ante el SII",
+        "siFalla": "Inicia actividades en primera categoría ante el SII: este programa es para negocios formalizados.",
+        "fuente": "https://www.sercotec.cl/crece"
+      },
+      {
+        "id": "ventas-min",
+        "campo": "ventas_uf",
+        "op": "gte",
+        "valor": 200,
+        "texto": "Ventas netas anuales de al menos 200 UF",
+        "siFalla": "Este programa exige ventas netas anuales de al menos 200 UF.",
+        "fuente": "https://www.sercotec.cl/crece"
+      },
+      {
+        "id": "ventas-max",
+        "campo": "ventas_uf",
+        "op": "lte",
+        "valor": 25000,
+        "texto": "Ventas netas anuales de hasta 25.000 UF",
+        "siFalla": "Tus ventas superan el máximo de 25.000 UF de este programa.",
+        "fuente": "https://www.sercotec.cl/crece"
+      },
+      {
+        "id": "cursos-sercotec",
+        "campo": "cursos_sercotec",
+        "op": "eq",
+        "valor": 1,
+        "texto": "Tres cursos gratuitos del Portal de Capacitación Virtual de Sercotec aprobados",
+        "siFalla": "Aprueba los tres cursos gratuitos del Portal de Capacitación Virtual de Sercotec antes del cierre de la convocatoria.",
+        "fuente": "https://www.sercotec.cl/crece"
+      },
+      {
+        "id": "al-dia",
+        "campo": "al_dia",
+        "op": "eq",
+        "valor": 1,
+        "texto": "Sin deudas laborales, previsionales ni tributarias",
+        "siFalla": "Ponte al día en tus obligaciones laborales, previsionales y tributarias.",
+        "fuente": "https://www.sercotec.cl/crece"
+      }
+    ]
+  },
+  {
+    "id": "sercotec-crece-sostenible",
+    "nombre": "Crece Sostenible",
+    "entidad": "Sercotec",
+    "descripcion": "Subsidio no reembolsable para inversiones en prácticas productivas sostenibles de empresas y cooperativas formalizadas.",
+    "url": "https://www.sercotec.cl/crece-sostenible",
+    "montoAprox": "$7.000.000 a $9.000.000",
+    "comoPostular": "Postulación en línea en sercotec.cl durante la convocatoria de tu región. Las bases de cada convocatoria fijan el aporte propio (un porcentaje del subsidio) y el foco regional; el subsidio es neto: tú financias los impuestos del proyecto.",
+    "vigencia": "No hay una fecha fija: Sercotec abre convocatorias puntuales varias veces al año, por región. Revisa cuáles están abiertas ahora mismo en la página oficial de postulaciones abiertas.",
+    "revisado": "2026-10-19",
+    "reglas": [
+      {
+        "id": "formalizado",
+        "campo": "iniciado_actividades",
+        "op": "eq",
+        "valor": 1,
+        "texto": "Inicio de actividades en primera categoría ante el SII",
+        "siFalla": "Inicia actividades en primera categoría ante el SII: este programa es para negocios formalizados.",
+        "fuente": "https://www.sercotec.cl/crece-sostenible"
+      },
+      {
+        "id": "ventas-min",
+        "campo": "ventas_uf",
+        "op": "gte",
+        "valor": 200,
+        "texto": "Ventas netas anuales de al menos 200 UF",
+        "siFalla": "Este programa exige ventas netas anuales de al menos 200 UF.",
+        "fuente": "https://www.sercotec.cl/crece-sostenible"
+      },
+      {
+        "id": "ventas-max",
+        "campo": "ventas_uf",
+        "op": "lte",
+        "valor": 25000,
+        "texto": "Ventas netas anuales de hasta 25.000 UF",
+        "siFalla": "Tus ventas superan el máximo de 25.000 UF de este programa.",
+        "fuente": "https://www.sercotec.cl/crece-sostenible"
+      },
+      {
+        "id": "cursos-sercotec",
+        "campo": "cursos_sercotec",
+        "op": "eq",
+        "valor": 1,
+        "texto": "Tres cursos gratuitos del Portal de Capacitación Virtual de Sercotec aprobados",
+        "siFalla": "Aprueba los tres cursos gratuitos del Portal de Capacitación Virtual de Sercotec antes del cierre de la convocatoria.",
+        "fuente": "https://www.sercotec.cl/crece-sostenible"
+      }
+    ]
+  },
+  {
+    "id": "sercotec-digitaliza-almacen",
+    "nombre": "Digitaliza tu Almacén",
+    "entidad": "Sercotec",
+    "descripcion": "Subsidio no reembolsable para que almacenes de barrio incorporen herramientas digitales.",
+    "url": "https://www.sercotec.cl/digitaliza-tu-almacen",
+    "montoAprox": "$3.000.000",
+    "comoPostular": "Postulación en línea en sercotec.cl durante la convocatoria de tu región. Las bases de cada convocatoria fijan el aporte propio (un porcentaje del subsidio) y el foco regional; el subsidio es neto: tú financias los impuestos del proyecto.",
+    "vigencia": "No hay una fecha fija: Sercotec abre convocatorias puntuales varias veces al año, por región. Revisa cuáles están abiertas ahora mismo en la página oficial de postulaciones abiertas.",
+    "revisado": "2026-10-19",
+    "reglas": [
+      {
+        "id": "formalizado",
+        "campo": "iniciado_actividades",
+        "op": "eq",
+        "valor": 1,
+        "texto": "Inicio de actividades en primera categoría ante el SII",
+        "siFalla": "Inicia actividades en primera categoría ante el SII: este programa es para negocios formalizados.",
+        "fuente": "https://www.sercotec.cl/digitaliza-tu-almacen"
+      },
+      {
+        "id": "almacen",
+        "campo": "es_almacen",
+        "op": "eq",
+        "valor": 1,
+        "texto": "Almacén de barrio (minimarket, panadería, botillería, frutería, etc.)",
+        "siFalla": "Este programa es para almacenes de barrio.",
+        "fuente": "https://www.sercotec.cl/digitaliza-tu-almacen"
+      },
+      {
+        "id": "antiguedad",
+        "campo": "antiguedad_meses",
+        "op": "gt",
+        "valor": 12,
+        "texto": "Más de 12 meses de antigüedad",
+        "siFalla": "Se exige más de 12 meses de antigüedad.",
+        "fuente": "https://www.sercotec.cl/digitaliza-tu-almacen"
+      },
+      {
+        "id": "ventas-max",
+        "campo": "ventas_uf",
+        "op": "lte",
+        "valor": 5000,
+        "texto": "Ventas netas anuales de hasta 5.000 UF",
+        "siFalla": "Tus ventas superan el máximo de 5.000 UF de este programa.",
+        "fuente": "https://www.sercotec.cl/digitaliza-tu-almacen"
+      },
+      {
+        "id": "curso-almacenes",
+        "campo": "curso_almacenes",
+        "op": "eq",
+        "valor": 1,
+        "texto": "Curso «Almacenes de Chile» del Portal de Capacitación de Sercotec",
+        "siFalla": "Inscríbete en el curso «Almacenes de Chile» del Portal de Capacitación de Sercotec.",
+        "fuente": "https://www.sercotec.cl/digitaliza-tu-almacen"
+      }
+    ]
+  },
+  {
+    "id": "sercotec-kit-digital",
+    "nombre": "Kit Digital (Ruta Digital)",
+    "entidad": "Sercotec",
+    "descripcion": "Subsidio para activos digitales a micro y pequeñas empresas que completaron los cursos de Ruta Digital.",
+    "url": "https://www.sercotec.cl/ruta-digital",
+    "montoAprox": "$1.200.000",
+    "comoPostular": "Postulación en línea en sercotec.cl durante la convocatoria de tu región. Las bases de cada convocatoria fijan el aporte propio (un porcentaje del subsidio) y el foco regional; el subsidio es neto: tú financias los impuestos del proyecto.",
+    "vigencia": "No hay una fecha fija: Sercotec abre convocatorias puntuales varias veces al año, por región. Revisa cuáles están abiertas ahora mismo en la página oficial de postulaciones abiertas.",
+    "revisado": "2026-10-19",
+    "reglas": [
+      {
+        "id": "formalizado",
+        "campo": "iniciado_actividades",
+        "op": "eq",
+        "valor": 1,
+        "texto": "Inicio de actividades en primera categoría ante el SII",
+        "siFalla": "Inicia actividades en primera categoría ante el SII: este programa es para negocios formalizados.",
+        "fuente": "https://www.sercotec.cl/ruta-digital"
+      },
+      {
+        "id": "ventas-max",
+        "campo": "ventas_uf",
+        "op": "lte",
+        "valor": 25000,
+        "texto": "Ventas netas anuales de hasta 25.000 UF",
+        "siFalla": "Tus ventas superan el máximo de 25.000 UF de este programa.",
+        "fuente": "https://www.sercotec.cl/ruta-digital"
+      },
+      {
+        "id": "ruta-digital",
+        "campo": "cursos_ruta_digital",
+        "op": "eq",
+        "valor": 1,
+        "texto": "Los 9 cursos de Ruta Digital aprobados antes de la convocatoria",
+        "siFalla": "Completa los 9 cursos de Ruta Digital (rutadigital.cl) antes del inicio de la convocatoria.",
+        "fuente": "https://www.sercotec.cl/ruta-digital"
+      }
+    ]
+  },
+  {
+    "id": "sercotec-pymes-globales",
+    "nombre": "Pymes Globales",
+    "entidad": "Sercotec",
+    "descripcion": "Apoyo para que micro y pequeñas empresas vendan en plataformas internacionales.",
+    "url": "https://www.sercotec.cl/pymes-globales-2025",
+    "montoAprox": "Según las bases de la convocatoria",
+    "comoPostular": "Postulación en línea en sercotec.cl durante la convocatoria de tu región. Las bases de cada convocatoria fijan el aporte propio (un porcentaje del subsidio) y el foco regional; el subsidio es neto: tú financias los impuestos del proyecto.",
+    "vigencia": "No hay una fecha fija: Sercotec abre convocatorias puntuales varias veces al año, por región. Revisa cuáles están abiertas ahora mismo en la página oficial de postulaciones abiertas.",
+    "revisado": "2026-10-19",
+    "reglas": [
+      {
+        "id": "formalizado",
+        "campo": "iniciado_actividades",
+        "op": "eq",
+        "valor": 1,
+        "texto": "Inicio de actividades en primera categoría ante el SII",
+        "siFalla": "Inicia actividades en primera categoría ante el SII: este programa es para negocios formalizados.",
+        "fuente": "https://www.sercotec.cl/pymes-globales-2025"
+      },
+      {
+        "id": "ventas-min",
+        "campo": "ventas_uf",
+        "op": "gte",
+        "valor": 200,
+        "texto": "Ventas netas anuales de al menos 200 UF",
+        "siFalla": "Este programa exige ventas netas anuales de al menos 200 UF.",
+        "fuente": "https://www.sercotec.cl/pymes-globales-2025"
+      },
+      {
+        "id": "ventas-max",
+        "campo": "ventas_uf",
+        "op": "lte",
+        "valor": 25000,
+        "texto": "Ventas netas anuales de hasta 25.000 UF",
+        "siFalla": "Tus ventas superan el máximo de 25.000 UF de este programa.",
+        "fuente": "https://www.sercotec.cl/pymes-globales-2025"
+      }
+    ]
+  },
+  {
+    "id": "sercotec-negocios-digitales",
+    "nombre": "Negocios Digitales",
+    "entidad": "Sercotec",
+    "descripcion": "Apoyo para ingresar a marketplaces nacionales: equipamiento digital, software de gestión y campaña digital (hasta $500.000 netos cada uno).",
+    "url": "https://www.sercotec.cl/negocios-digitales-2025",
+    "montoAprox": "Hasta $500.000 netos por componente",
+    "comoPostular": "Postulación en línea en sercotec.cl durante la convocatoria de tu región. Las bases de cada convocatoria fijan el aporte propio (un porcentaje del subsidio) y el foco regional; el subsidio es neto: tú financias los impuestos del proyecto.",
+    "vigencia": "No hay una fecha fija: Sercotec abre convocatorias puntuales varias veces al año, por región. Revisa cuáles están abiertas ahora mismo en la página oficial de postulaciones abiertas.",
+    "revisado": "2026-10-19",
+    "reglas": [
+      {
+        "id": "formalizado",
+        "campo": "iniciado_actividades",
+        "op": "eq",
+        "valor": 1,
+        "texto": "Inicio de actividades en primera categoría ante el SII",
+        "siFalla": "Inicia actividades en primera categoría ante el SII: este programa es para negocios formalizados.",
+        "fuente": "https://www.sercotec.cl/negocios-digitales-2025"
+      },
+      {
+        "id": "ventas-min",
+        "campo": "ventas_uf",
+        "op": "gte",
+        "valor": 200,
+        "texto": "Ventas netas anuales de al menos 200 UF",
+        "siFalla": "Este programa exige ventas netas anuales de al menos 200 UF.",
+        "fuente": "https://www.sercotec.cl/negocios-digitales-2025"
+      },
+      {
+        "id": "ventas-max",
+        "campo": "ventas_uf",
+        "op": "lte",
+        "valor": 25000,
+        "texto": "Ventas netas anuales de hasta 25.000 UF",
+        "siFalla": "Tus ventas superan el máximo de 25.000 UF de este programa.",
+        "fuente": "https://www.sercotec.cl/negocios-digitales-2025"
+      },
+      {
+        "id": "cliente-cdn",
+        "campo": "cliente_cdn_12m",
+        "op": "eq",
+        "valor": 1,
+        "texto": "Cliente de un Centro de Desarrollo de Negocios desde hace al menos 12 meses",
+        "siFalla": "Debes ser cliente de un Centro de Desarrollo de Negocios de Sercotec desde hace al menos 12 meses.",
+        "fuente": "https://www.sercotec.cl/negocios-digitales-2025"
+      }
+    ]
+  },
+  {
+    "id": "sercotec-mejora-negocios",
+    "nombre": "MejoraNegocios",
+    "entidad": "Sercotec",
+    "descripcion": "Cofinancia asesorías técnicas y certificaciones para mejorar productos o servicios de micro y pequeñas empresas.",
+    "url": "https://www.sercotec.cl/mejora-negocios",
+    "montoAprox": "Hasta $400.000 (general) o $1.500.000 (especializada)",
+    "comoPostular": "Se postula en la Dirección Regional de Sercotec; el aporte de la empresa es de 10% a 30% del cofinanciamiento y lo fija cada región.",
+    "vigencia": "No hay una fecha fija: Sercotec abre convocatorias puntuales varias veces al año, por región. Revisa cuáles están abiertas ahora mismo en la página oficial de postulaciones abiertas.",
+    "revisado": "2026-10-19",
+    "reglas": [
+      {
+        "id": "formalizado",
+        "campo": "iniciado_actividades",
+        "op": "eq",
+        "valor": 1,
+        "texto": "Inicio de actividades en primera categoría ante el SII",
+        "siFalla": "Inicia actividades en primera categoría ante el SII: este programa es para negocios formalizados.",
+        "fuente": "https://www.sercotec.cl/mejora-negocios"
+      },
+      {
+        "id": "ventas-min",
+        "campo": "ventas_uf",
+        "op": "gte",
+        "valor": 200,
+        "texto": "Ventas netas anuales de al menos 200 UF",
+        "siFalla": "Este programa exige ventas netas anuales de al menos 200 UF.",
+        "fuente": "https://www.sercotec.cl/mejora-negocios"
+      },
+      {
+        "id": "ventas-max",
+        "campo": "ventas_uf",
+        "op": "lte",
+        "valor": 25000,
+        "texto": "Ventas netas anuales de hasta 25.000 UF",
+        "siFalla": "Tus ventas superan el máximo de 25.000 UF de este programa.",
+        "fuente": "https://www.sercotec.cl/mejora-negocios"
+      }
+    ]
+  },
+  {
+    "id": "sercotec-promocion-canales",
+    "nombre": "Promoción y canales de comercialización",
+    "entidad": "Sercotec",
+    "descripcion": "Apoyo para participar en ferias, exposiciones y otros espacios de comercialización.",
+    "url": "https://www.sercotec.cl/promocion-y-canales-de-comercializacion",
+    "montoAprox": "Según la convocatoria regional",
+    "comoPostular": "Cada Dirección Regional define la proporción del aporte de Sercotec y de la empresa en cada oportunidad.",
+    "vigencia": "No hay una fecha fija: Sercotec abre convocatorias puntuales varias veces al año, por región. Revisa cuáles están abiertas ahora mismo en la página oficial de postulaciones abiertas.",
+    "revisado": "2026-10-19",
+    "reglas": [
+      {
+        "id": "formalizado",
+        "campo": "iniciado_actividades",
+        "op": "eq",
+        "valor": 1,
+        "texto": "Inicio de actividades en primera categoría ante el SII",
+        "siFalla": "Inicia actividades en primera categoría ante el SII: este programa es para negocios formalizados.",
+        "fuente": "https://www.sercotec.cl/promocion-y-canales-de-comercializacion"
+      }
+    ]
+  },
+  {
+    "id": "corfo-crea-y-valida",
+    "nombre": "Crea y Valida I+D+i",
+    "entidad": "Corfo",
+    "descripcion": "Subsidio para desarrollar nuevos o mejorados productos y procesos que requieran I+D, desde el prototipo hasta la validación técnica y comercial.",
+    "url": "https://www.corfo.gob.cl/sites/cpp/convocatoria/crea-y-valida-2026/",
+    "montoAprox": "Hasta $180.000.000 (individual) o $220.000.000 (colaborativo); cofinancia hasta 80% si es micro o pequeña",
+    "comoPostular": "Postulación en línea en corfo.cl cuando se abre la convocatoria (todo Chile). Cofinancia hasta 80% (micro y pequeña), 60% (mediana) o 40% (grande), con hasta 10% adicional para empresas lideradas por mujeres.",
+    "vigencia": "Convocatoria anual: la de 2026 abrió el 19-may y cerró el 4-ago-2026, así que hoy está cerrada. Revisa en corfo.gob.cl cuándo se abre la siguiente.",
+    "revisado": "2026-10-19",
+    "reglas": [
+      {
+        "id": "persona-juridica",
+        "campo": "persona_juridica",
+        "op": "eq",
+        "valor": 1,
+        "texto": "Persona jurídica constituida en Chile",
+        "siFalla": "Este programa exige una persona jurídica constituida en Chile.",
+        "fuente": "https://www.corfo.gob.cl/sites/cpp/convocatoria/crea-y-valida-2026/"
+      },
+      {
+        "id": "antiguedad",
+        "campo": "antiguedad_meses",
+        "op": "gte",
+        "valor": 24,
+        "texto": "Al menos 24 meses desde el inicio de actividades en primera categoría",
+        "siFalla": "Se exigen al menos 24 meses desde el inicio de actividades en un giro de primera categoría.",
+        "fuente": "https://www.corfo.gob.cl/sites/cpp/convocatoria/crea-y-valida-2026/"
+      },
+      {
+        "id": "ventas-24m",
+        "campo": "ventas_24m",
+        "op": "eq",
+        "valor": 1,
+        "texto": "Ingresos por ventas acreditables en los 24 meses previos a la postulación",
+        "siFalla": "Debes poder acreditar ingresos por ventas en los 24 meses previos a la postulación.",
+        "fuente": "https://www.corfo.gob.cl/sites/cpp/convocatoria/crea-y-valida-2026/"
+      },
+      {
+        "id": "proyecto-innovacion",
+        "campo": "proyecto_innovacion",
+        "op": "eq",
+        "valor": 1,
+        "texto": "Un proyecto de innovación o I+D (producto, servicio o proceso nuevo o mejorado)",
+        "siFalla": "Este programa financia proyectos de innovación o I+D: necesitas un proyecto de ese tipo.",
+        "fuente": "https://www.corfo.gob.cl/sites/cpp/convocatoria/crea-y-valida-2026/"
+      }
+    ]
+  },
+  {
+    "id": "corfo-sumate-a-innovar",
+    "nombre": "Súmate a Innovar",
+    "entidad": "Corfo",
+    "descripcion": "Subsidio regional para que empresas inicien o aceleren proyectos de innovación; no exige antigüedad ni nivel de ventas mínimo.",
+    "url": "https://www.corfo.gob.cl/sites/cpp/programa/sumate-a-innovar/",
+    "montoAprox": "Cofinancia un porcentaje del costo del proyecto (lo fijan las bases de cada región)",
+    "comoPostular": "Postulación en línea en corfo.cl en la convocatoria de tu región. Pueden postular personas jurídicas constituidas en Chile y personas naturales mayores de 18 años que tributen en primera categoría.",
+    "vigencia": "Convocatorias regionales a lo largo del año; a esta fecha todas las de 2026 figuran cerradas. Revisa la página del programa para la próxima de tu región.",
+    "revisado": "2026-10-19",
+    "reglas": [
+      {
+        "id": "tributa-1a-categoria",
+        "campo": "iniciado_actividades",
+        "op": "eq",
+        "valor": 1,
+        "texto": "Persona jurídica o persona natural mayor de 18 años que tributa en primera categoría",
+        "siFalla": "Debes ser persona jurídica, o persona natural mayor de 18 años que tribute en primera categoría (inicia actividades ante el SII).",
+        "fuente": "https://www.corfo.gob.cl/sites/cpp/programa/sumate-a-innovar/"
+      },
+      {
+        "id": "proyecto-innovacion",
+        "campo": "proyecto_innovacion",
+        "op": "eq",
+        "valor": 1,
+        "texto": "Un proyecto de innovación o I+D (producto, servicio o proceso nuevo o mejorado)",
+        "siFalla": "Este programa financia proyectos de innovación o I+D: necesitas un proyecto de ese tipo.",
+        "fuente": "https://www.corfo.gob.cl/sites/cpp/programa/sumate-a-innovar/"
+      }
+    ]
+  },
+  {
+    "id": "anid-startup-ciencia",
+    "nombre": "Startup Ciencia",
+    "entidad": "ANID",
+    "descripcion": "Financiamiento para que empresas jóvenes de base científico-tecnológica desarrollen y validen productos o servicios.",
+    "url": "https://anid.cl/concursos/startup-ciencia-2026/",
+    "montoAprox": "Hasta $134.550.000 de ANID; la empresa aporta al menos 15% del costo",
+    "comoPostular": "Postulación en línea en anid.cl durante el concurso. Exige un equipo mínimo de 3 personas (director, gerente de proyecto y personal científico-técnico). Las empresas lideradas por mujeres o fuera de la Región Metropolitana pueden aportar menos.",
+    "vigencia": "Concurso anual: el de 2026 cerró el 10-sep-2025 y su fallo era el 29-abr-2026. Revisa anid.cl para el siguiente. Atención: una página anterior de ANID habla de menos de 5 años; las bases vigentes deben confirmarlo.",
+    "revisado": "2026-10-19",
+    "reglas": [
+      {
+        "id": "persona-juridica",
+        "campo": "persona_juridica",
+        "op": "eq",
+        "valor": 1,
+        "texto": "Persona jurídica constituida en Chile",
+        "siFalla": "Este programa exige una persona jurídica constituida en Chile.",
+        "fuente": "https://anid.cl/concursos/startup-ciencia-2026/"
+      },
+      {
+        "id": "juventud",
+        "campo": "antiguedad_meses",
+        "op": "lt",
+        "valor": 120,
+        "texto": "Menos de 10 años desde la constitución",
+        "siFalla": "Se exige menos de 10 años desde la constitución de la empresa.",
+        "fuente": "https://anid.cl/concursos/startup-ciencia-2026/"
+      },
+      {
+        "id": "ventas-max",
+        "campo": "ventas_uf",
+        "op": "lte",
+        "valor": 25000,
+        "texto": "Micro o pequeña empresa: ventas anuales de hasta 25.000 UF",
+        "siFalla": "Solo micro y pequeñas empresas (ventas anuales de hasta 25.000 UF).",
+        "fuente": "https://anid.cl/concursos/startup-ciencia-2026/"
+      },
+      {
+        "id": "proyecto-innovacion",
+        "campo": "proyecto_innovacion",
+        "op": "eq",
+        "valor": 1,
+        "texto": "Un proyecto de innovación o I+D (producto, servicio o proceso nuevo o mejorado)",
+        "siFalla": "Este programa financia proyectos de innovación o I+D: necesitas un proyecto de ese tipo.",
+        "fuente": "https://anid.cl/concursos/startup-ciencia-2026/"
+      }
+    ]
+  },
+  {
+    "id": "fia-proyectos-innovacion",
+    "nombre": "FIA · Proyectos de innovación (Línea 3)",
+    "entidad": "FIA",
+    "descripcion": "Cofinancia proyectos de innovación de alto nivel de madurez (TRL 7 y 8) en el sector silvoagropecuario y la cadena agroalimentaria.",
+    "url": "https://www.fia.cl/pilares-de-accion/impulso-para-innovar/convocatorias/",
+    "montoAprox": "Según las bases; la contraparte es de al menos 20% del costo (10% en dinero)",
+    "comoPostular": "Postulación en la plataforma de convocatorias de FIA. El proyecto debe durar hasta 12 meses y enmarcarse en un lineamiento estratégico (agua, sanidad vegetal y animal, recursos forestales o mercados agroalimentarios).",
+    "vigencia": "Convocatoria nacional anual: la Línea 3 de 2026 cerró el 8-sep-2026. Revisa fia.cl para la siguiente.",
+    "revisado": "2026-10-19",
+    "reglas": [
+      {
+        "id": "persona-juridica",
+        "campo": "persona_juridica",
+        "op": "eq",
+        "valor": 1,
+        "texto": "Persona jurídica constituida en Chile",
+        "siFalla": "Este programa exige una persona jurídica constituida en Chile.",
+        "fuente": "https://www.fia.cl/pilares-de-accion/impulso-para-innovar/convocatorias/"
+      },
+      {
+        "id": "ventas-max",
+        "campo": "ventas_uf",
+        "op": "lte",
+        "valor": 50000,
+        "texto": "Micro, pequeña o mediana empresa: ventas anuales de hasta 50.000 UF",
+        "siFalla": "Solo micro, pequeñas y medianas empresas (ventas anuales de hasta 50.000 UF).",
+        "fuente": "https://www.fia.cl/pilares-de-accion/impulso-para-innovar/convocatorias/"
+      },
+      {
+        "id": "sector",
+        "campo": "sector_agroalimentario",
+        "op": "eq",
+        "valor": 1,
+        "texto": "Vinculada al sector silvoagropecuario o a la cadena agroalimentaria",
+        "siFalla": "Debes estar vinculado al sector silvoagropecuario o agroalimentario (o postular asociado a una empresa que lo esté).",
+        "fuente": "https://www.fia.cl/pilares-de-accion/impulso-para-innovar/convocatorias/"
+      },
+      {
+        "id": "proyecto-innovacion",
+        "campo": "proyecto_innovacion",
+        "op": "eq",
+        "valor": 1,
+        "texto": "Un proyecto de innovación o I+D (producto, servicio o proceso nuevo o mejorado)",
+        "siFalla": "Este programa financia proyectos de innovación o I+D: necesitas un proyecto de ese tipo.",
+        "fuente": "https://www.fia.cl/pilares-de-accion/impulso-para-innovar/convocatorias/"
+      }
+    ]
+  }
+]

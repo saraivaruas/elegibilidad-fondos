@@ -6,6 +6,8 @@ Formato basado en [Keep a Changelog](https://keepachangelog.com/es-ES/1.1.0/); v
 
 ## [0.3.0] - 2026-10-19
 ### Agregado
+- `PaginaOficial`: lee el texto oficial de la página de un programa de Sercotec o Corfo («¿Qué es?», «¿Quiénes pueden postular?», «Pasos de Postulación»…) para mostrarlo dentro de la aplicación; `Ficha.TextoOficialUrl` indica de dónde.
+- `ConvocatoriasFia` entrega además el texto oficial por apartados (`Secciones`).
 - `ConvocatoriasFia`: lee la API pública de FIA (`wp-json/wp/v2/convocatorias`) y obtiene el inicio, el último cierre y el enlace exacto de postulación.
 ### Cambiado
 - Crédito Corfo MIPYME y Garantía Pro-Inversión apuntan al sitio oficial de Corfo (y su listado de intermediarios) en vez de ChileAtiende.

@@ -47,7 +47,8 @@
           }
         ],
         "nota": "Se solicita en cualquier momento del año a través de un Intermediario Financiero No Bancario: elige uno del listado de Corfo y pide la evaluación allí."
-      }
+      },
+      "textoOficialUrl": "https://www.corfo.gob.cl/sites/cpp/convocatoria/credito_mipyme/"
     },
     "ventana": {
       "tipo": "permanente",
@@ -103,7 +104,8 @@
           }
         ],
         "nota": "Se solicita en el banco o institución financiera donde pides el crédito; ellos aplican la garantía de Corfo."
-      }
+      },
+      "textoOficialUrl": "https://www.corfo.gob.cl/sites/cpp/convocatoria/garantia_pro_inversion/"
     },
     "ventana": {
       "tipo": "permanente",
@@ -311,7 +313,8 @@
           }
         ],
         "nota": "Cada región abre su propia convocatoria, con su propia dirección y fechas. Ahí eliges la de tu región y postulas con tu cuenta de Sercotec."
-      }
+      },
+      "textoOficialUrl": "https://www.sercotec.cl/capital-semilla-emprende"
     },
     "ventana": {
       "tipo": "externo",
@@ -399,7 +402,8 @@
           }
         ],
         "nota": "Cada región abre su propia convocatoria, con su propia dirección y fechas. Ahí eliges la de tu región y postulas con tu cuenta de Sercotec."
-      }
+      },
+      "textoOficialUrl": "https://www.sercotec.cl/capital-abeja-emprende"
     },
     "ventana": {
       "tipo": "externo",
@@ -502,7 +506,8 @@
           }
         ],
         "nota": "Cada región abre su propia convocatoria, con su propia dirección y fechas. Ahí eliges la de tu región y postulas con tu cuenta de Sercotec."
-      }
+      },
+      "textoOficialUrl": "https://www.sercotec.cl/capital-pioneras"
     },
     "ventana": {
       "tipo": "externo",
@@ -584,7 +589,8 @@
           }
         ],
         "nota": "Cada región abre su propia convocatoria, con su propia dirección y fechas. Ahí eliges la de tu región y postulas con tu cuenta de Sercotec."
-      }
+      },
+      "textoOficialUrl": "https://www.sercotec.cl/capital-semilla-modo-empleo"
     },
     "ventana": {
       "tipo": "externo",
@@ -697,7 +703,8 @@
           }
         ],
         "nota": "Cada región abre su propia convocatoria, con su propia dirección y fechas. Ahí eliges la de tu región y postulas con tu cuenta de Sercotec."
-      }
+      },
+      "textoOficialUrl": "https://www.sercotec.cl/crece"
     },
     "ventana": {
       "tipo": "externo",
@@ -797,7 +804,8 @@
           }
         ],
         "nota": "Cada región abre su propia convocatoria, con su propia dirección y fechas. Ahí eliges la de tu región y postulas con tu cuenta de Sercotec."
-      }
+      },
+      "textoOficialUrl": "https://www.sercotec.cl/crece-sostenible"
     },
     "ventana": {
       "tipo": "externo",
@@ -888,7 +896,8 @@
           }
         ],
         "nota": "Cada región abre su propia convocatoria, con su propia dirección y fechas. Ahí eliges la de tu región y postulas con tu cuenta de Sercotec."
-      }
+      },
+      "textoOficialUrl": "https://www.sercotec.cl/digitaliza-tu-almacen"
     },
     "ventana": {
       "tipo": "externo",
@@ -961,7 +970,8 @@
           }
         ],
         "nota": "Cada región abre su propia convocatoria, con su propia dirección y fechas. Ahí eliges la de tu región y postulas con tu cuenta de Sercotec."
-      }
+      },
+      "textoOficialUrl": "https://www.sercotec.cl/ruta-digital"
     },
     "ventana": {
       "tipo": "externo",
@@ -1035,7 +1045,8 @@
           }
         ],
         "nota": "Cada región abre su propia convocatoria, con su propia dirección y fechas. Ahí eliges la de tu región y postulas con tu cuenta de Sercotec."
-      }
+      },
+      "textoOficialUrl": "https://www.sercotec.cl/pymes-globales-2025"
     },
     "ventana": {
       "tipo": "externo",
@@ -1117,7 +1128,8 @@
           }
         ],
         "nota": "Cada región abre su propia convocatoria, con su propia dirección y fechas. Ahí eliges la de tu región y postulas con tu cuenta de Sercotec."
-      }
+      },
+      "textoOficialUrl": "https://www.sercotec.cl/negocios-digitales-2025"
     },
     "ventana": {
       "tipo": "externo",
@@ -1190,7 +1202,8 @@
           }
         ],
         "nota": "Cada región abre su propia convocatoria, con su propia dirección y fechas. Ahí eliges la de tu región y postulas con tu cuenta de Sercotec."
-      }
+      },
+      "textoOficialUrl": "https://www.sercotec.cl/mejora-negocios"
     },
     "ventana": {
       "tipo": "externo",
@@ -1246,7 +1259,8 @@
           }
         ],
         "nota": "Cada región abre su propia convocatoria, con su propia dirección y fechas. Ahí eliges la de tu región y postulas con tu cuenta de Sercotec."
-      }
+      },
+      "textoOficialUrl": "https://www.sercotec.cl/promocion-y-canales-de-comercializacion"
     },
     "ventana": {
       "tipo": "externo",

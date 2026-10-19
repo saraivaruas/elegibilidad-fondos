@@ -22,6 +22,7 @@ public record Regla(
 /// <summary>
 /// La ficha de un programa para mostrarla completa dentro de la plataforma, sin mandar a la persona a otro sitio. Todo es texto resumido de las bases oficiales;
 /// un apartado que las fuentes no permiten confirmar se deja vacío (null) y la ficha no lo muestra: no se rellena con suposiciones.
+/// <c>TextoOficialUrl</c> es la página pública del programa de la que la aplicación puede leer, al abrir la ficha, el texto oficial actualizado (ver <see cref="PaginaOficial"/>).
 /// </summary>
 public record Ficha(
     string? Resumen = null,
@@ -32,10 +33,14 @@ public record Ficha(
     List<string>? Gastos = null,
     List<string>? Notas = null,
     string? Fuente = null,
-    Postulacion? Postulacion = null);
+    Postulacion? Postulacion = null,
+    string? TextoOficialUrl = null);
 
 /// <summary>Un enlace oficial para postular. El primero de la lista es el principal («Ir a postular»); los demás son de apoyo.</summary>
 public record Enlace(string Texto, string Url);
+
+/// <summary>Un apartado del texto oficial de una convocatoria (por ejemplo «OBJETIVO» o «CALENDARIZACIÓN»), ya sin formato, para mostrarlo dentro de la aplicación.</summary>
+public record SeccionOficial(string Titulo, string Texto);
 
 /// <summary>Dónde se postula de verdad. Las convocatorias regionales (Sercotec, Súmate a Innovar) cambian de dirección en cada llamado: se enlaza la página oficial que las lista.</summary>
 public record Postulacion(List<Enlace> Enlaces, string? Nota = null);

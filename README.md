@@ -15,6 +15,7 @@ Se usa dentro de DataHub Providencia (herramienta «Diagnóstico») y también s
 - `QueDesbloquea(perfil)`: qué arreglo habilita más programas.
 - Una regla puede aplicar solo en ciertos casos (`cuando`), por ejemplo las ventas mínimas de Crece según la antigüedad.
 - **Plazo de postulación**: cada programa trae una `Ventana` (permanente, por fechas o consultada a la fuente). `CalendarioSercotec` lee el calendario público de Sercotec y `ConvocatoriasFia` la API pública de convocatorias de FIA (fechas reales y enlace de postulación) y entrega, por programa, si hay convocatorias abiertas con el enlace exacto de «Postular»; si no se pudo consultar, el estado es «desconocido», nunca «cerrado».
+- **Texto oficial dentro de la aplicación**: `PaginaOficial` (Sercotec y Corfo) y `ConvocatoriasFia` entregan los apartados oficiales ya en texto plano. Los sitios oficiales no permiten mostrarse dentro de otra página (X-Frame-Options / frame-ancestors, también Corfo), por eso se lee el contenido en el servidor y solo el envío de la postulación se hace en el sitio de cada institución.
 - **Ficha completa** de cada programa (proceso, plazos, criterios de evaluación, gastos y enlace oficial) para mostrarla dentro de tu aplicación.
 
 ## Uso

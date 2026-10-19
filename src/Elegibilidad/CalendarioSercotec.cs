@@ -7,7 +7,7 @@ namespace Elegibilidad;
 public record ConvocatoriaSercotec(string Titulo, string Instrumento, string Region, string Inicio, string UrlPostular, bool Abierta);
 
 /// <summary>Resultado de comprobar el plazo de postulación de un programa.</summary>
-public record EstadoPlazo(EstadoPostulacion Estado, string Texto, IReadOnlyList<Enlace> Enlaces);
+public record EstadoPlazo(EstadoPostulacion Estado, string Texto, IReadOnlyList<Enlace> Enlaces, IReadOnlyList<SeccionOficial>? Detalle = null);
 
 /// <summary>
 /// Lee el calendario público de Sercotec (la respuesta HTML de <c>widgetsercotec.sercotec.cl/Calendario/TraerInformacion/?region=0&amp;tipoInstrumento=0</c>)

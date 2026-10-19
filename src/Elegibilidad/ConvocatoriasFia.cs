@@ -6,7 +6,7 @@ using System.Text.RegularExpressions;
 namespace Elegibilidad;
 
 /// <summary>Una convocatoria publicada por FIA (Fundación para la Innovación Agraria) en su API pública de WordPress.</summary>
-public record ConvocatoriaFia(string Titulo, string Slug, string Link, DateOnly? Inicio, DateOnly? Cierre, string? UrlPostulacion);
+public record ConvocatoriaFia(string Titulo, string Slug, string Link, DateOnly? Inicio, DateOnly? Cierre, string? UrlPostulacion, IReadOnlyList<SeccionOficial>? Secciones = null);
 
 /// <summary>
 /// Lee las convocatorias de FIA desde su API pública (<c>https://www.fia.cl/wp-json/wp/v2/convocatorias</c>), que trae el texto oficial con las fechas de INICIO y CIERRE
@@ -22,6 +22,26 @@ public static partial class ConvocatoriasFia
     [GeneratedRegex(@"<(script|style)[^>]*>.*?</\1>", RegexOptions.Singleline | RegexOptions.IgnoreCase)] private static partial Regex ScriptRx();
     [GeneratedRegex(@"<[^>]+>")] private static partial Regex TagRx();
     [GeneratedRegex(@"\s+")] private static partial Regex EspaciosRx();
+    [GeneratedRegex(@"<h[1-6][^>]*>(.*?)</h[1-6]>", RegexOptions.Singleline | RegexOptions.IgnoreCase)] private static partial Regex EncabezadoRx();
+
+    private static string Limpio(string html) => EspaciosRx().Replace(WebUtility.HtmlDecode(TagRx().Replace(html, " ")), " ").Trim();
+
+    /// <summary>Divide el texto de la convocatoria por sus encabezados. Cada apartado se recorta a 1.500 caracteres y se devuelven como máximo 10, para mostrarlos tal cual dentro de la aplicación.</summary>
+    private static IReadOnlyList<SeccionOficial> Secciones(string html)
+    {
+        var res = new List<SeccionOficial>();
+        var marcas = EncabezadoRx().Matches(html);
+        for (int i = 0; i < marcas.Count && res.Count < 10; i++)
+        {
+            var ini = marcas[i].Index + marcas[i].Length;
+            var fin = i + 1 < marcas.Count ? marcas[i + 1].Index : html.Length;
+            var titulo = Limpio(marcas[i].Groups[1].Value);
+            var texto = Limpio(html[ini..fin]);
+            if (titulo.Length == 0 || texto.Length == 0) continue;
+            res.Add(new SeccionOficial(titulo, texto.Length > 1500 ? texto[..1500] + "…" : texto));
+        }
+        return res;
+    }
 
     private static DateOnly? Fecha(Match m)
     {
@@ -46,7 +66,7 @@ public static partial class ConvocatoriasFia
             var url = UrlRx().Match(texto) is { Success: true } m ? m.Groups[1].Value.TrimEnd('.', ',', ')') : null;
             if (url is not null && !(Uri.TryCreate(url, UriKind.Absolute, out var u) && u.Scheme == Uri.UriSchemeHttps && u.Host.EndsWith("fia.cl", StringComparison.OrdinalIgnoreCase))) url = null;
             res.Add(new ConvocatoriaFia(titulo, e.TryGetProperty("slug", out var s) ? s.GetString() ?? "" : "", e.TryGetProperty("link", out var l) ? l.GetString() ?? "" : "",
-                Fecha(InicioRx().Match(texto)), cierres.Count > 0 ? cierres.Max() : null, url));
+                Fecha(InicioRx().Match(texto)), cierres.Count > 0 ? cierres.Max() : null, url, Secciones(html)));
         }
         return res;
     }
@@ -63,10 +83,10 @@ public static partial class ConvocatoriasFia
                      .OrderByDescending(x => x.Cierre).FirstOrDefault();
         if (c is null) return new(EstadoPostulacion.Desconocida, "No encontramos esta convocatoria en el sitio de FIA.", []);
         var enlaces = new List<Enlace>();
-        if (c.UrlPostulacion is not null) enlaces.Add(new Enlace("Postular en la plataforma de FIA", c.UrlPostulacion));
+        if (c.UrlPostulacion is not null) enlaces.Add(new Enlace("Ir a postular en la plataforma de FIA", c.UrlPostulacion));
         if (c.Link.StartsWith("https://", StringComparison.Ordinal)) enlaces.Add(new Enlace("Bases y detalle de la convocatoria (FIA)", c.Link));
-        if (c.Inicio is { } i && hoy < i) return new(EstadoPostulacion.Proxima, $"La postulación abre el {i:dd-MM-yyyy}.", enlaces);
-        if (hoy <= c.Cierre!.Value) return new(EstadoPostulacion.Abierta, $"Postulación abierta hasta el {c.Cierre:dd-MM-yyyy} a las 15:00 (hora de Chile).", enlaces);
-        return new(EstadoPostulacion.Cerrada, $"Fuera de plazo: la postulación cerró el {c.Cierre:dd-MM-yyyy}.", enlaces);
+        if (c.Inicio is { } i && hoy < i) return new(EstadoPostulacion.Proxima, $"La postulación abre el {i:dd-MM-yyyy}.", enlaces, c.Secciones);
+        if (hoy <= c.Cierre!.Value) return new(EstadoPostulacion.Abierta, $"Postulación abierta hasta el {c.Cierre:dd-MM-yyyy} a las 15:00 (hora de Chile).", enlaces, c.Secciones);
+        return new(EstadoPostulacion.Cerrada, $"Fuera de plazo: la postulación cerró el {c.Cierre:dd-MM-yyyy}.", enlaces, c.Secciones);
     }
 }

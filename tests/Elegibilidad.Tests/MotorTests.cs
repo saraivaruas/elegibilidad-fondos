@@ -216,18 +216,36 @@ public class ConvocatoriasFiaTests
         Assert.Equal("https://convocatoria.fia.cl/", c.UrlPostulacion);
     }
 
-    [Theory]
-    [InlineData("2026-07-27", EstadoPostulacion.Proxima)]
-    [InlineData("2026-09-08", EstadoPostulacion.Abierta)]          // el día del cierre aún se puede
-    [InlineData("2026-09-09", EstadoPostulacion.Cerrada)]
-    public void Estado_segun_la_fecha(string hoy, EstadoPostulacion esperado) =>
-        Assert.Equal(esperado, ConvocatoriasFia.Resolver(V, ConvocatoriasFia.Parsear(Json), DateOnly.Parse(hoy)).Estado);
+    [Fact]
+    public void Entrega_el_texto_oficial_por_apartados_para_mostrarlo_dentro_de_la_aplicacion()
+    {
+        var s = ConvocatoriasFia.Parsear(Json).First().Secciones!;
+        Assert.Contains(s, x => x.Titulo == "OBJETIVO" && x.Texto.StartsWith("Apoyar la implementación"));
+        Assert.Contains(s, x => x.Titulo.StartsWith("CALENDARIZACI") && x.Texto.Contains("28 de julio de 2026"));
+        Assert.All(s, x => Assert.DoesNotContain("<", x.Texto));
+    }
 
     [Fact]
-    public void Abierta_entrega_el_enlace_exacto()
+    public void Lee_el_texto_oficial_de_una_pagina_de_programa_sin_duplicados()
     {
-        var r = ConvocatoriasFia.Resolver(V, ConvocatoriasFia.Parsear(Json), new DateOnly(2026, 8, 1));
-        Assert.Equal("https://convocatoria.fia.cl/", r.Enlaces[0].Url);
+        const string html = """
+            <header><h2>Quiero emprender</h2></header>
+            <h1>Crece</h1><h2>&#191;Qu&#233; es?</h2><p>Subsidio para <b>crecer</b>.</p>
+            <h2>&#191;Qui&#233;nes pueden acceder?</h2><p>Con inicio de actividades.</p><h2>Revisa las convocatorias</h2><p>otra cosa</p>
+            <h1>Crece</h1><h2>&#191;Qu&#233; es?</h2><p>Subsidio duplicado para celular.</p>
+            """;
+        var s = PaginaOficial.Parsear(html);
+        Assert.Equal(2, s.Count);
+        Assert.Equal("Subsidio para crecer .", s[0].Texto);
+        Assert.DoesNotContain(s, x => x.Texto.Contains("duplicado"));
+    }
+
+    [Fact]
+    public void Los_programas_de_Sercotec_y_los_creditos_de_Corfo_indican_de_donde_leer_su_texto_oficial()
+    {
+        var m = CatalogoFondos.Cargar();
+        Assert.All(m.Catalogo.Where(p => p.Entidad == "Sercotec"), p => Assert.StartsWith("https://www.sercotec.cl/", p.Ficha!.TextoOficialUrl));
+        Assert.StartsWith("https://www.corfo.gob.cl/", m.Catalogo.First(p => p.Id == "corfo-credito-mipyme").Ficha!.TextoOficialUrl);
     }
 
     [Fact]

@@ -1,5 +1,7 @@
 # Cambios
 
+Propietario y autor: Jorge Luis Saraiva Ruas ([@saraivaruas](https://github.com/saraivaruas)).
+
 Formato basado en [Keep a Changelog](https://keepachangelog.com/es-ES/1.1.0/); versiones según [SemVer](https://semver.org/lang/es/).
 
 ## [0.1.0] - 2026-10-19

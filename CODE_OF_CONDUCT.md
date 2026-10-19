@@ -17,4 +17,4 @@ Queremos una comunidad abierta y respetuosa, libre de acoso, para todas las pers
 - Cualquier conducta que razonablemente se considere inapropiada en un entorno profesional.
 
 ## Aplicación
-Quienes mantienen el proyecto pueden editar o eliminar comentarios, *issues* y aportes que no cumplan este código, y vetar a quien lo infrinja. Las denuncias se envían a **contacto@inge-innova.com** y se tratan con reserva.
+Quienes mantienen el proyecto pueden editar o eliminar comentarios, *issues* y aportes que no cumplan este código, y vetar a quien lo infrinja. Las denuncias se envían a **contacto@inge-innova.com** o al propietario del proyecto, [@saraivaruas](https://github.com/saraivaruas) y se tratan con reserva.

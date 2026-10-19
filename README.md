@@ -1,5 +1,7 @@
 # ElegibilidadFondos
 
+Proyecto de **Jorge Luis Saraiva Ruas** ([@saraivaruas](https://github.com/saraivaruas)) · MIT
+
 Motor de elegibilidad para fondos y programas de financiamiento en Chile (Corfo, Sercotec, ANID, FIA, GORE y otros).
 Responde a una empresa tres cosas: **a qué programas puede postular, cuáles le faltan por confirmar y qué le falta para calificar**.
 
@@ -53,4 +55,4 @@ Este proyecto **orienta, no garantiza**. Los requisitos vienen de páginas públ
 Ver [CONTRIBUTING.md](CONTRIBUTING.md), [CODE_OF_CONDUCT.md](CODE_OF_CONDUCT.md) y [SECURITY.md](SECURITY.md). Historial de cambios en [CHANGELOG.md](CHANGELOG.md).
 
 ## Licencia
-[MIT](LICENSE) © 2026 Inge Innova. Los datos del catálogo resumen información pública de Sercotec, Corfo, ANID, FIA y Google; los nombres de los programas pertenecen a sus respectivas instituciones, con las que este proyecto no tiene relación.
+[MIT](LICENSE) © 2026 Jorge Luis Saraiva Ruas ([@saraivaruas](https://github.com/saraivaruas)), propietario y autor del proyecto. Los datos del catálogo resumen información pública de Sercotec, Corfo, ANID, FIA y Google; los nombres de los programas pertenecen a sus respectivas instituciones, con las que este proyecto no tiene relación.

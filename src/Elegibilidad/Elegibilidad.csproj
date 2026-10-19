@@ -5,7 +5,11 @@
     <ImplicitUsings>enable</ImplicitUsings>
     <RootNamespace>Elegibilidad</RootNamespace>
     <Version>0.1.0</Version>
-    <Authors>Inge Innova</Authors>
+    <Authors>Jorge Luis Saraiva Ruas</Authors>
+    <Company>Inge Innova</Company>
+    <Copyright>Copyright (c) 2026 Jorge Luis Saraiva Ruas</Copyright>
+    <PackageProjectUrl>https://github.com/saraivaruas/elegibilidad-fondos</PackageProjectUrl>
+    <RepositoryUrl>https://github.com/saraivaruas/elegibilidad-fondos</RepositoryUrl>
     <Description>Motor determinista de elegibilidad para fondos y programas de financiamiento en Chile.</Description>
     <PackageLicenseExpression>MIT</PackageLicenseExpression>
     <PackageReadmeFile>README.md</PackageReadmeFile>

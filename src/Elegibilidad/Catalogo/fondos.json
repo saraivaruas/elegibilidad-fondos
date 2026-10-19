@@ -28,7 +28,14 @@
         "siFalla": "Tus ventas superan el tope de 100.000 UF de este crédito; revisa Garantía Pro-Inversión.",
         "fuente": "https://www.chileatiende.gob.cl/fichas/868"
       }
-    ]
+    ],
+    "ficha": {
+      "resumen": "Financiamiento, leasing o factoring para fortalecer o expandir una empresa ya formalizada, con ventas anuales de hasta 100.000 UF.",
+      "notas": [
+        "Esta ficha resume lo que informa la página oficial del programa; los criterios de evaluación, plazos y documentos exactos dependen de las bases de cada convocatoria y aún no están resumidos aquí."
+      ],
+      "fuente": "Página oficial del programa"
+    }
   },
   {
     "id": "corfo-garantia-pro-inversion",
@@ -59,7 +66,14 @@
         "siFalla": "Tus ventas superan el tope de 600.000 UF de esta garantía.",
         "fuente": "https://www.chileatiende.gob.cl/fichas/877-garantia-pro-inversion"
       }
-    ]
+    ],
+    "ficha": {
+      "resumen": "Garantía estatal que facilita el acceso a financiamiento bancario para empresas ya formalizadas, desde micro hasta grandes empresas, con ventas anuales de hasta 600.000 UF.",
+      "notas": [
+        "Esta ficha resume lo que informa la página oficial del programa; los criterios de evaluación, plazos y documentos exactos dependen de las bases de cada convocatoria y aún no están resumidos aquí."
+      ],
+      "fuente": "Página oficial del programa"
+    }
   },
   {
     "id": "google-cloud-start",
@@ -99,7 +113,14 @@
         "siFalla": "Start exige menos de 5 años desde que iniciaste actividades.",
         "fuente": "https://cloud.google.com/startup/apply"
       }
-    ]
+    ],
+    "ficha": {
+      "resumen": "Créditos de Google Cloud para empresas recién constituidas, sin financiamiento institucional.",
+      "notas": [
+        "Esta ficha resume lo que informa la página oficial del programa; los criterios de evaluación, plazos y documentos exactos dependen de las bases de cada convocatoria y aún no están resumidos aquí."
+      ],
+      "fuente": "Página oficial del programa"
+    }
   },
   {
     "id": "google-cloud-scale",
@@ -139,7 +160,14 @@
         "siFalla": "Scale exige menos de 10 años desde que iniciaste actividades.",
         "fuente": "https://cloud.google.com/startup/apply"
       }
-    ]
+    ],
+    "ficha": {
+      "resumen": "Créditos de Google Cloud para startups con financiamiento de capital (de semilla a Serie A).",
+      "notas": [
+        "Esta ficha resume lo que informa la página oficial del programa; los criterios de evaluación, plazos y documentos exactos dependen de las bases de cada convocatoria y aún no están resumidos aquí."
+      ],
+      "fuente": "Página oficial del programa"
+    }
   },
   {
     "id": "sercotec-semilla-emprende",
@@ -170,7 +198,40 @@
         "siFalla": "Debes tener 18 años o más.",
         "fuente": "https://www.sercotec.cl/capital-semilla-emprende"
       }
-    ]
+    ],
+    "ficha": {
+      "resumen": "Subsidio de $3.500.000 netos para un negocio nuevo, con un aporte empresarial del 3% del subsidio. El plan de trabajo debe incluir acciones de gestión empresarial por $200.000 a $500.000 (asistencia técnica, capacitación, marketing o gastos de formalización) y el resto en inversiones.",
+      "proceso": [
+        "Registrarte como usuario/a en el sitio de Sercotec (o actualizar tus datos) y postular completando un formulario en línea.",
+        "Responder el test de preselección (perfil del/la emprendedor/a 70% y del emprendimiento 30%) y cumplir los requisitos de admisibilidad.",
+        "Llenar el formulario de modelo de negocio, grabar y adjuntar un video de presentación (pitch) y completar la estructura de costos.",
+        "Evaluación técnica de las postulaciones por el Agente Operador de Sercotec.",
+        "Quienes superan la nota de corte reciben una visita de evaluación en terreno.",
+        "El Comité de Evaluación Regional (CER) evalúa, asigna los recursos y fija la lista de beneficiarios y de espera.",
+        "Formalización: se firma el contrato con el Agente Operador y se entrega el aporte empresarial."
+      ],
+      "plazos": [
+        "Convocatoria de la Región Metropolitana 2026: se postuló desde el 29 de abril (12:00) hasta el 13 de mayo de 2026 (15:00), hora de Chile continental.",
+        "Cada región abre su propia convocatoria y Sercotec puede modificar los plazos; las fechas vigentes se informan en sercotec.cl."
+      ],
+      "gastos": [
+        "Inversiones: activos (por ejemplo software o registro de marca), habilitación de infraestructura (100% si eres propietario/a; hasta 30% si arriendas) y capital de trabajo (nuevas contrataciones, nuevos arriendos hasta 40% de las inversiones, materias primas y mercadería hasta 20%).",
+        "Gestión empresarial: $200.000 a $500.000.",
+        "No se financia IVA ni otros impuestos, ni la compra de bienes raíces o instrumentos financieros."
+      ],
+      "notas": [
+        "Es para personas sin inicio de actividades en primera categoría (se puede tener inicio en segunda categoría) y mayores de 18 años.",
+        "Al formalizar se acredita lo que digan las bases regionales; revisa su anexo de requisitos de admisibilidad."
+      ],
+      "fuente": "Bases de convocatoria Capital Semilla Emprende 2026, Región Metropolitana (Sercotec)",
+      "criteriosEvaluacion": [
+        "Nota final = evaluación técnica 20% + evaluación en terreno 30% + Comité de Evaluación Regional 50%.",
+        "Evaluación técnica: formulario de modelo de negocio 60% y video de presentación 40%.",
+        "Evaluación en terreno: coherencia del proyecto con el relato 20%, factibilidad de implementación 20%, estado de desarrollo del emprendimiento 15%, viabilidad económica 10%, capacidades en el rubro 10% e implementación con proceso de manufactura 25%.",
+        "Comité Regional: potencial del proyecto 20%, fundamentación de la oportunidad 20%, coherencia y factibilidad técnica 20%, orientación a economías para el desarrollo sostenible 10% y coherencia de esa orientación con las inversiones 30%.",
+        "Estos porcentajes son de las bases 2026 de la Región Metropolitana; otras regiones pueden variar."
+      ]
+    }
   },
   {
     "id": "sercotec-abeja-emprende",
@@ -210,7 +271,26 @@
         "siFalla": "Este programa es solo para mujeres (sexo registral femenino).",
         "fuente": "https://www.sercotec.cl/capital-abeja-emprende"
       }
-    ]
+    ],
+    "ficha": {
+      "resumen": "Subsidio no reembolsable para mujeres que quieren formalizar su negocio. Se rige por el proceso del programa Emprende de Sercotec.",
+      "proceso": [
+        "Registrarte como usuario/a en el sitio de Sercotec (o actualizar tus datos) y postular completando un formulario en línea.",
+        "Responder el test de preselección (perfil del/la emprendedor/a 70% y del emprendimiento 30%) y cumplir los requisitos de admisibilidad.",
+        "Llenar el formulario de modelo de negocio, grabar y adjuntar un video de presentación (pitch) y completar la estructura de costos.",
+        "Evaluación técnica de las postulaciones por el Agente Operador de Sercotec.",
+        "Quienes superan la nota de corte reciben una visita de evaluación en terreno.",
+        "El Comité de Evaluación Regional (CER) evalúa, asigna los recursos y fija la lista de beneficiarios y de espera."
+      ],
+      "notas": [
+        "Las bases del programa Emprende indican que, según el presupuesto, puede haber además convocatorias de Capital Abeja Emprende y Capital Pioneras.",
+        "Los requisitos propios (sexo registral femenino, rubros, deudas) están en la lista de requisitos de esta ficha."
+      ],
+      "fuente": "Bases de convocatoria Capital Semilla Emprende 2026 y ficha del programa (Sercotec)",
+      "criteriosEvaluacion": [
+        "Mismo esquema del programa Emprende: evaluación técnica, evaluación en terreno y Comité de Evaluación Regional, con ponderaciones que fija cada convocatoria (ver el ejemplo de Capital Semilla Emprende)."
+      ]
+    }
   },
   {
     "id": "sercotec-pioneras",
@@ -268,7 +348,26 @@
         "siFalla": "Ponte al día en tus obligaciones laborales, previsionales y tributarias.",
         "fuente": "https://www.sercotec.cl/capital-pioneras"
       }
-    ]
+    ],
+    "ficha": {
+      "resumen": "Subsidio no reembolsable para negocios nuevos liderados por mujeres en rubros donde ellas participan menos. Se rige por el proceso del programa Emprende de Sercotec.",
+      "proceso": [
+        "Registrarte como usuario/a en el sitio de Sercotec (o actualizar tus datos) y postular completando un formulario en línea.",
+        "Responder el test de preselección (perfil del/la emprendedor/a 70% y del emprendimiento 30%) y cumplir los requisitos de admisibilidad.",
+        "Llenar el formulario de modelo de negocio, grabar y adjuntar un video de presentación (pitch) y completar la estructura de costos.",
+        "Evaluación técnica de las postulaciones por el Agente Operador de Sercotec.",
+        "Quienes superan la nota de corte reciben una visita de evaluación en terreno.",
+        "El Comité de Evaluación Regional (CER) evalúa, asigna los recursos y fija la lista de beneficiarios y de espera."
+      ],
+      "notas": [
+        "Las bases del programa Emprende indican que, según el presupuesto, puede haber además convocatorias de Capital Abeja Emprende y Capital Pioneras.",
+        "Los requisitos propios (sexo registral femenino, rubros, deudas) están en la lista de requisitos de esta ficha."
+      ],
+      "fuente": "Bases de convocatoria Capital Semilla Emprende 2026 y ficha del programa (Sercotec)",
+      "criteriosEvaluacion": [
+        "Mismo esquema del programa Emprende: evaluación técnica, evaluación en terreno y Comité de Evaluación Regional, con ponderaciones que fija cada convocatoria (ver el ejemplo de Capital Semilla Emprende)."
+      ]
+    }
   },
   {
     "id": "sercotec-semilla-modo-empleo",
@@ -317,7 +416,14 @@
         "siFalla": "Debes pertenecer a uno de los segmentos priorizados: jóvenes de 18 a 29 años, mujeres de 30 a 54 años o personas de 55 años o más.",
         "fuente": "https://www.sercotec.cl/capital-semilla-modo-empleo"
       }
-    ]
+    ],
+    "ficha": {
+      "resumen": "Subsidio no reembolsable para nuevos negocios formales de personas jóvenes, mujeres de 30 a 54 años y adultos mayores de 55.",
+      "notas": [
+        "Esta ficha resume lo que informa la página oficial del programa; los criterios de evaluación, plazos y documentos exactos dependen de las bases de cada convocatoria y aún no están resumidos aquí."
+      ],
+      "fuente": "Página oficial del programa"
+    }
   },
   {
     "id": "sercotec-crece",
@@ -375,7 +481,36 @@
         "siFalla": "Ponte al día en tus obligaciones laborales, previsionales y tributarias.",
         "fuente": "https://www.sercotec.cl/crece"
       }
-    ]
+    ],
+    "ficha": {
+      "resumen": "Subsidio de $5.000.000 netos para micro y pequeñas empresas y cooperativas: hasta $1.000.000 en gestión empresarial y el resto en inversión (activos, infraestructura y capital de trabajo). Requiere aporte empresarial, cuyo porcentaje fijan las bases de cada convocatoria.",
+      "proceso": [
+        "Crear o actualizar tu perfil en sercotec.cl, como persona y como actividad económica.",
+        "Completar el formulario de postulación: test de preselección, formulario CANVAS de modelo de negocio, estructura de costos y video pitch.",
+        "Adjuntar la carpeta tributaria del SII más actualizada, en PDF, sin modificar y con todos los formularios F29 requeridos.",
+        "Evaluación técnica, evaluación en terreno y Comité de Evaluación Regional.",
+        "Formalización: acreditar al menos 3 de 6 cursos virtuales de Sercotec y entregar el aporte empresarial (efectivo, transferencia o depósito)."
+      ],
+      "plazos": [
+        "No hay una fecha fija: cada región abre y cierra sus convocatorias varias veces al año.",
+        "Los cursos deben estar aprobados al firmar el contrato y no hay extensiones de plazo; conviene hacerlos antes."
+      ],
+      "gastos": [
+        "Capital de trabajo: sueldos, arriendos y materias primas.",
+        "Activos fijos: maquinaria y equipos.",
+        "No se financia IVA ni otros impuestos."
+      ],
+      "notas": [
+        "Errores comunes: postular a último minuto, subir una carpeta tributaria incorrecta o incompleta, incoherencia entre el video y el CANVAS, y errores en la estructura de costos.",
+        "Los 6 cursos virtuales gratuitos: Marco Regulatorio Circular para MIPES, Electromovilidad para MIPES, Introducción a la Digitalización de la Empresa, Comercio Digital Nacional, Gestión Financiera y Determinación del precio."
+      ],
+      "fuente": "Recomendaciones para la postulación Crece 2026 y bases de convocatorias 2026 (Sercotec)",
+      "criteriosEvaluacion": [
+        "Nota final en las bases 2026 revisadas: evaluación técnica 20%, evaluación en terreno 30% y Comité de Evaluación Regional 50% (convocatoria Crece FNDR de Los Lagos).",
+        "Las convocatorias sectoriales ponderan distinto; por ejemplo, en Crece Turismo e Industrias Creativas de O'Higgins el Comité da 40% al potencial del proyecto.",
+        "En varias bases, ante empates se prioriza a mujeres y luego a quien postuló primero."
+      ]
+    }
   },
   {
     "id": "sercotec-crece-sostenible",
@@ -424,7 +559,30 @@
         "siFalla": "Aprueba los tres cursos gratuitos del Portal de Capacitación Virtual de Sercotec antes del cierre de la convocatoria.",
         "fuente": "https://www.sercotec.cl/crece-sostenible"
       }
-    ]
+    ],
+    "ficha": {
+      "resumen": "Subsidio de $7.000.000 a $9.000.000 para inversiones en prácticas productivas sostenibles, con un aporte empresarial del 15% del subsidio en las bases revisadas (Maule 2026).",
+      "proceso": [
+        "Registrarte en sercotec.cl y completar el formulario de postulación: test de preselección (perfil del empresario 70% y del negocio 30%), formulario de proyecto de negocio sostenible y video pitch.",
+        "Evaluación técnica, evaluación en terreno y Comité de Evaluación Regional.",
+        "Formalización: acreditar los cursos de Sercotec y entregar el aporte empresarial."
+      ],
+      "plazos": [
+        "Convocatoria de la Región del Maule 2026: hasta el 8 de julio de 2026 (15:00).",
+        "Cada región fija sus fechas; las vigentes están en sercotec.cl."
+      ],
+      "notas": [
+        "Los porcentajes son de las bases 2026 de la Región del Maule; otras regiones pueden variar.",
+        "No se financia el pago a consultores por asistencia en la etapa de postulación."
+      ],
+      "fuente": "Bases de convocatoria Crece Sostenible 2026, Región del Maule (Sercotec)",
+      "criteriosEvaluacion": [
+        "Nota final: evaluación técnica 20%, evaluación en terreno 30% y Comité de Evaluación Regional 50%.",
+        "Evaluación técnica: formulario de proyecto de negocio sostenible 60% y video pitch 40%.",
+        "Evaluación en terreno: coherencia con el relato 30%, factibilidad de implementación 30%, factibilidad económica del negocio 20%, entre otros.",
+        "Comité Regional: potencial del proyecto 35%, viabilidad 25%, potencial de contribución a la sostenibilidad 30% y 10% si la postulante es mujer o la empresa tiene mayoría de socias mujeres (51% o más) con representante legal mujer."
+      ]
+    }
   },
   {
     "id": "sercotec-digitaliza-almacen",
@@ -482,7 +640,14 @@
         "siFalla": "Inscríbete en el curso «Almacenes de Chile» del Portal de Capacitación de Sercotec.",
         "fuente": "https://www.sercotec.cl/digitaliza-tu-almacen"
       }
-    ]
+    ],
+    "ficha": {
+      "resumen": "Subsidio no reembolsable para que almacenes de barrio incorporen herramientas digitales.",
+      "notas": [
+        "Esta ficha resume lo que informa la página oficial del programa; los criterios de evaluación, plazos y documentos exactos dependen de las bases de cada convocatoria y aún no están resumidos aquí."
+      ],
+      "fuente": "Página oficial del programa"
+    }
   },
   {
     "id": "sercotec-kit-digital",
@@ -522,7 +687,14 @@
         "siFalla": "Completa los 9 cursos de Ruta Digital (rutadigital.cl) antes del inicio de la convocatoria.",
         "fuente": "https://www.sercotec.cl/ruta-digital"
       }
-    ]
+    ],
+    "ficha": {
+      "resumen": "Subsidio para activos digitales a micro y pequeñas empresas que completaron los cursos de Ruta Digital.",
+      "notas": [
+        "Esta ficha resume lo que informa la página oficial del programa; los criterios de evaluación, plazos y documentos exactos dependen de las bases de cada convocatoria y aún no están resumidos aquí."
+      ],
+      "fuente": "Página oficial del programa"
+    }
   },
   {
     "id": "sercotec-pymes-globales",
@@ -562,7 +734,14 @@
         "siFalla": "Tus ventas superan el máximo de 25.000 UF de este programa.",
         "fuente": "https://www.sercotec.cl/pymes-globales-2025"
       }
-    ]
+    ],
+    "ficha": {
+      "resumen": "Apoyo para que micro y pequeñas empresas vendan en plataformas internacionales.",
+      "notas": [
+        "Esta ficha resume lo que informa la página oficial del programa; los criterios de evaluación, plazos y documentos exactos dependen de las bases de cada convocatoria y aún no están resumidos aquí."
+      ],
+      "fuente": "Página oficial del programa"
+    }
   },
   {
     "id": "sercotec-negocios-digitales",
@@ -611,7 +790,14 @@
         "siFalla": "Debes ser cliente de un Centro de Desarrollo de Negocios de Sercotec desde hace al menos 12 meses.",
         "fuente": "https://www.sercotec.cl/negocios-digitales-2025"
       }
-    ]
+    ],
+    "ficha": {
+      "resumen": "Apoyo para ingresar a marketplaces nacionales: equipamiento digital, software de gestión y campaña digital (hasta $500.000 netos cada uno).",
+      "notas": [
+        "Esta ficha resume lo que informa la página oficial del programa; los criterios de evaluación, plazos y documentos exactos dependen de las bases de cada convocatoria y aún no están resumidos aquí."
+      ],
+      "fuente": "Página oficial del programa"
+    }
   },
   {
     "id": "sercotec-mejora-negocios",
@@ -651,7 +837,14 @@
         "siFalla": "Tus ventas superan el máximo de 25.000 UF de este programa.",
         "fuente": "https://www.sercotec.cl/mejora-negocios"
       }
-    ]
+    ],
+    "ficha": {
+      "resumen": "Cofinancia asesorías técnicas y certificaciones para mejorar productos o servicios de micro y pequeñas empresas.",
+      "notas": [
+        "Esta ficha resume lo que informa la página oficial del programa; los criterios de evaluación, plazos y documentos exactos dependen de las bases de cada convocatoria y aún no están resumidos aquí."
+      ],
+      "fuente": "Página oficial del programa"
+    }
   },
   {
     "id": "sercotec-promocion-canales",
@@ -673,7 +866,14 @@
         "siFalla": "Inicia actividades en primera categoría ante el SII: este programa es para negocios formalizados.",
         "fuente": "https://www.sercotec.cl/promocion-y-canales-de-comercializacion"
       }
-    ]
+    ],
+    "ficha": {
+      "resumen": "Apoyo para participar en ferias, exposiciones y otros espacios de comercialización.",
+      "notas": [
+        "Esta ficha resume lo que informa la página oficial del programa; los criterios de evaluación, plazos y documentos exactos dependen de las bases de cada convocatoria y aún no están resumidos aquí."
+      ],
+      "fuente": "Página oficial del programa"
+    }
   },
   {
     "id": "corfo-crea-y-valida",
@@ -722,7 +922,25 @@
         "siFalla": "Este programa financia proyectos de innovación o I+D: necesitas un proyecto de ese tipo.",
         "fuente": "https://www.corfo.gob.cl/sites/cpp/convocatoria/crea-y-valida-2026/"
       }
-    ]
+    ],
+    "ficha": {
+      "resumen": "Subsidio de hasta $180.000.000 (proyecto individual) o $220.000.000 (colaborativo) que cofinancia hasta 80% del costo en micro y pequeñas empresas, 60% en medianas y 40% en grandes, con hasta 10% adicional para empresas lideradas por mujeres.",
+      "proceso": [
+        "Revisar las bases legales de la convocatoria.",
+        "Fase 1 (obligatoria): presentar el Perfil de Proyecto.",
+        "Recibir la retroalimentación por correo y, con el enlace que se envía, iniciar la postulación (Fase 2).",
+        "Evaluación y entrega de resultados."
+      ],
+      "plazos": [
+        "Convocatoria 2026: apertura el 19 de mayo; cierre de la Fase 1 (Perfil) el 9 de junio; cierre de la Fase 2 (Postulación) el 4 de agosto de 2026 a las 17:00; resultados desde el 27 de noviembre de 2026.",
+        "A la fecha de esta ficha la convocatoria está cerrada; Corfo repite el instrumento cada año."
+      ],
+      "notas": [
+        "Se exige persona jurídica constituida en Chile con al menos 24 meses desde el inicio de actividades en primera categoría y ventas acreditables en los 24 meses previos.",
+        "Los criterios de evaluación, los gastos financiables y la duración están en las bases técnicas (Resolución (E) N°388), que esta ficha aún no resume."
+      ],
+      "fuente": "Convocatoria Crea y Valida 2026 (Corfo)"
+    }
   },
   {
     "id": "corfo-sumate-a-innovar",
@@ -753,7 +971,14 @@
         "siFalla": "Este programa financia proyectos de innovación o I+D: necesitas un proyecto de ese tipo.",
         "fuente": "https://www.corfo.gob.cl/sites/cpp/programa/sumate-a-innovar/"
       }
-    ]
+    ],
+    "ficha": {
+      "resumen": "Subsidio regional para que empresas inicien o aceleren proyectos de innovación; no exige antigüedad ni nivel de ventas mínimo.",
+      "notas": [
+        "Esta ficha resume lo que informa la página oficial del programa; los criterios de evaluación, plazos y documentos exactos dependen de las bases de cada convocatoria y aún no están resumidos aquí."
+      ],
+      "fuente": "Página oficial del programa"
+    }
   },
   {
     "id": "anid-startup-ciencia",
@@ -802,7 +1027,14 @@
         "siFalla": "Este programa financia proyectos de innovación o I+D: necesitas un proyecto de ese tipo.",
         "fuente": "https://anid.cl/concursos/startup-ciencia-2026/"
       }
-    ]
+    ],
+    "ficha": {
+      "resumen": "Financiamiento para que empresas jóvenes de base científico-tecnológica desarrollen y validen productos o servicios.",
+      "notas": [
+        "Esta ficha resume lo que informa la página oficial del programa; los criterios de evaluación, plazos y documentos exactos dependen de las bases de cada convocatoria y aún no están resumidos aquí."
+      ],
+      "fuente": "Página oficial del programa"
+    }
   },
   {
     "id": "fia-proyectos-innovacion",
@@ -851,6 +1083,13 @@
         "siFalla": "Este programa financia proyectos de innovación o I+D: necesitas un proyecto de ese tipo.",
         "fuente": "https://www.fia.cl/pilares-de-accion/impulso-para-innovar/convocatorias/"
       }
-    ]
+    ],
+    "ficha": {
+      "resumen": "Cofinancia proyectos de innovación de alto nivel de madurez (TRL 7 y 8) en el sector silvoagropecuario y la cadena agroalimentaria.",
+      "notas": [
+        "Esta ficha resume lo que informa la página oficial del programa; los criterios de evaluación, plazos y documentos exactos dependen de las bases de cada convocatoria y aún no están resumidos aquí."
+      ],
+      "fuente": "Página oficial del programa"
+    }
   }
 ]

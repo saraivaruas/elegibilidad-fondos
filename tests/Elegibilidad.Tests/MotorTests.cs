@@ -20,6 +20,9 @@ public class MotorTests
             Assert.True(DateOnly.TryParse(p.Revisado, out _), $"{p.Id}: fecha de revisión inválida");
             Assert.Equal(p.Reglas.Count, p.Reglas.Select(r => r.Id).Distinct().Count());
             foreach (var r in p.Reglas) Assert.StartsWith("https://", r.Fuente);
+            Assert.NotNull(p.Ficha);
+            Assert.False(string.IsNullOrWhiteSpace(p.Ficha!.Resumen), $"{p.Id}: la ficha no tiene resumen");
+            Assert.False(string.IsNullOrWhiteSpace(p.Ficha.Fuente), $"{p.Id}: la ficha no indica su fuente");
         }
     }
 

@@ -19,10 +19,24 @@ public record Regla(
     public record Condicion(string Campo, string Op, double Valor);
 }
 
+/// <summary>
+/// La ficha de un programa para mostrarla completa dentro de la plataforma, sin mandar a la persona a otro sitio. Todo es texto resumido de las bases oficiales;
+/// un apartado que las fuentes no permiten confirmar se deja vacío (null) y la ficha no lo muestra: no se rellena con suposiciones.
+/// </summary>
+public record Ficha(
+    string? Resumen = null,
+    List<string>? Proceso = null,
+    List<string>? Plazos = null,
+    List<string>? CriteriosEvaluacion = null,
+    List<string>? Documentos = null,
+    List<string>? Gastos = null,
+    List<string>? Notas = null,
+    string? Fuente = null);
+
 /// <summary>Un programa del catálogo. <paramref name="Revisado"/> es la fecha en que alguien comparó estas reglas con las bases oficiales: pasado un año hay que volver a revisarlas.</summary>
 public record Programa(
     string Id, string Nombre, string Entidad, string Descripcion, string Url, string MontoAprox, string ComoPostular, string Vigencia,
-    string Revisado, List<Regla> Reglas);
+    string Revisado, List<Regla> Reglas, Ficha? Ficha = null);
 
 public record ResultadoRegla(Regla Regla, Veredicto Veredicto);
 

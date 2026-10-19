@@ -14,6 +14,8 @@ Se usa dentro de DataHub Providencia (herramienta «Diagnóstico») y también s
 - `Radar(perfil)`: todos los programas ordenados (cumple, por confirmar, descartados) con puntaje de afinidad y lo que falta.
 - `QueDesbloquea(perfil)`: qué arreglo habilita más programas.
 - Una regla puede aplicar solo en ciertos casos (`cuando`), por ejemplo las ventas mínimas de Crece según la antigüedad.
+- **Plazo de postulación**: cada programa trae una `Ventana` (permanente, por fechas o consultada a la fuente). `CalendarioSercotec` lee el calendario público de Sercotec y entrega, por programa, si hay convocatorias abiertas con el enlace exacto de «Postular»; si no se pudo consultar, el estado es «desconocido», nunca «cerrado».
+- **Ficha completa** de cada programa (proceso, plazos, criterios de evaluación, gastos y enlace oficial) para mostrarla dentro de tu aplicación.
 
 ## Uso
 ```csharp
@@ -36,7 +38,7 @@ dotnet test
 3. Pasado un año de `revisado`, volver a comparar con las bases.
 
 ## Estado
-Catálogo de 20 programas, revisados el 19-oct-2026 contra sus páginas oficiales:
+Catálogo de 20 programas con ficha, enlace de postulación y control de plazo, revisados el 19-oct-2026 contra sus páginas oficiales:
 - **Sercotec (12)**: Capital Semilla Emprende, Abeja Emprende, Pioneras, Semilla Modo Empleo, Crece, Crece Sostenible, Digitaliza tu Almacén, Kit Digital, Pymes Globales, Negocios Digitales, MejoraNegocios, Promoción y canales.
 - **Corfo (4)**: Crédito MIPYME, Garantía Pro-Inversión, Crea y Valida, Súmate a Innovar.
 - **ANID (1)**: Startup Ciencia. **FIA (1)**: Proyectos de innovación (Línea 3). **Google (2)**: Start y Scale.

@@ -133,3 +133,61 @@ public class MotorTests
         Assert.Equal(EstadoPostulacion.Desconocida, P("sercotec-crece").Ventana!.Estado(DateOnly.Parse("2026-10-19")));
     }
 }
+
+public class CalendarioSercotecTests
+{
+    // Recorte de la respuesta real del calendario de Sercotec (19-oct-2026).
+    private const string Html = """
+        <div id="contenedor1"><div id="nombre"><p><b>CONVOCATORIAS EN POSTULACI&#211;N</b></p></div><ul>
+        <li><p class="inicio-btn" style="display: inline;">Inicio 24-08-2026 15:00</p><br>
+        <a href="https://www.sercotec.cl/convocatoria/crece-region-x" target="_blank">CRECE REGI&#211;N X</a><br>
+        <p onclick="window.open('https://www.sercotec.cl/convocatoria/crece-region-x')" class="postular">Postular</p><br>
+        <p class="instrumento">Crece</p><p class="region">Regi&#243;n de Los Lagos</p></li>
+        <li><p class="inicio-btn">Inicio 25-08-2026</p><a href="x">CRECE SOSTENIBLE MALO</a>
+        <p onclick="window.open('http://evil.example.com/')" class="postular">Postular</p><p class="instrumento">Crece Sostenible</p><p class="region">Maule</p></li>
+        </ul></div>
+        <div id="contenedor2"><div id="nombre"><p><b>PR&#211;XIMAS CONVOCATORIAS</b></p></div><ul>
+        <li><p class="inicio-btn">Inicio 23-10-2026 12:00</p><a href="www.sercotec.cl">CAPITAL SEMILLA EMPRENDE MAULE</a>
+        <p class="instrumento">Emprende</p><p class="region">Regi&#243;n del Maule</p></li></ul></div>
+        <div id="contenedor3"><div id="nombre"><p><b>ACTIVIDADES CENTROS DE NEGOCIOS</b></p></div><ul>
+        <li><p class="inicio-btn">Inicio 19-10-2026</p><a href="x">Taller de Crece</a><p class="instrumento">Regi&#243;n Metropolitana</p><p class="region">Maip&#250;</p></li></ul></div>
+        """;
+
+    private static readonly MotorElegibilidad Motor = CatalogoFondos.Cargar();
+    private static Ventana V(string id) => Motor.Catalogo.First(p => p.Id == id).Ventana!;
+
+    [Fact]
+    public void Lee_convocatorias_abiertas_y_proximas_y_descarta_actividades_y_enlaces_ajenos()
+    {
+        var c = CalendarioSercotec.Parsear(Html);
+        Assert.Equal(2, c.Count);
+        Assert.Contains(c, x => x.Abierta && x.Region == "Región de Los Lagos" && x.UrlPostular == "https://www.sercotec.cl/convocatoria/crece-region-x");
+        Assert.DoesNotContain(c, x => x.UrlPostular.Contains("evil"));
+        Assert.DoesNotContain(c, x => x.Titulo.StartsWith("Taller"));
+    }
+
+    [Fact]
+    public void Abierta_entrega_el_enlace_exacto_de_postular()
+    {
+        var r = CalendarioSercotec.Resolver(V("sercotec-crece"), CalendarioSercotec.Parsear(Html));
+        Assert.Equal(EstadoPostulacion.Abierta, r.Estado);
+        Assert.Equal("https://www.sercotec.cl/convocatoria/crece-region-x", r.Enlaces[0].Url);
+    }
+
+    [Fact]
+    public void Crece_no_se_confunde_con_Crece_Sostenible()
+    {
+        Assert.Equal(EstadoPostulacion.Cerrada, CalendarioSercotec.Resolver(V("sercotec-crece-sostenible"), CalendarioSercotec.Parsear(Html)).Estado); // su único aviso tenía un enlace inválido
+    }
+
+    [Fact]
+    public void Proxima_y_cerrada()
+    {
+        Assert.Equal(EstadoPostulacion.Proxima, CalendarioSercotec.Resolver(V("sercotec-semilla-emprende"), CalendarioSercotec.Parsear(Html)).Estado);
+        Assert.Equal(EstadoPostulacion.Cerrada, CalendarioSercotec.Resolver(V("sercotec-pymes-globales"), CalendarioSercotec.Parsear(Html)).Estado);
+    }
+
+    [Fact]
+    public void Sin_calendario_el_estado_es_desconocido_y_no_cerrado() =>
+        Assert.Equal(EstadoPostulacion.Desconocida, CalendarioSercotec.Resolver(V("sercotec-crece"), null).Estado);
+}

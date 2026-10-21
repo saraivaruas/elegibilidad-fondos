@@ -81,7 +81,7 @@ public class MotorElegibilidad(IReadOnlyList<Programa> catalogo)
         var lista = JsonSerializer.Deserialize<List<Programa>>(json, opciones) ?? throw new InvalidDataException("El catálogo de fondos está vacío.");
         foreach (var p in lista)
         {
-            if (p.Reglas.Count == 0) throw new InvalidDataException($"El programa {p.Id} no tiene reglas.");
+            // Un programa sin requisitos que se puedan medir con el perfil (por ejemplo, uno de acompañamiento municipal sin dinero) puede tener la lista vacía: su ficha explica lo que se exige.
             foreach (var r in p.Reglas)
                 if (!Operadores.Contains(r.Op) || (r.Cuando is { } c && !Operadores.Contains(c.Op)))
                     throw new InvalidDataException($"Operador desconocido en {p.Id}/{r.Id}.");
@@ -114,7 +114,7 @@ public class MotorElegibilidad(IReadOnlyList<Programa> catalogo)
         var rs = p.Reglas.Select(r => new ResultadoRegla(r, EvaluarRegla(r, perfil))).ToList();
         var veredicto = rs.Any(x => x.Veredicto == Veredicto.NoCumple) ? Veredicto.NoCumple
             : rs.Any(x => x.Veredicto == Veredicto.PorConfirmar) ? Veredicto.PorConfirmar : Veredicto.Cumple;
-        var afinidad = (int)Math.Round(100.0 * rs.Count(x => x.Veredicto == Veredicto.Cumple) / rs.Count);
+        var afinidad = rs.Count == 0 ? 100 : (int)Math.Round(100.0 * rs.Count(x => x.Veredicto == Veredicto.Cumple) / rs.Count);
         return new ResultadoPrograma(p, veredicto, afinidad, rs);
     }
 

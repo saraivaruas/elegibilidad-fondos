@@ -255,3 +255,53 @@ public class ConvocatoriasFiaTests
         Assert.Equal(EstadoPostulacion.Desconocida, ConvocatoriasFia.Resolver(V, ConvocatoriasFia.Parsear("[]"), new DateOnly(2026, 10, 19)).Estado);
     }
 }
+
+public class FuentesNuevasTests
+{
+    private static readonly MotorElegibilidad Motor = CatalogoFondos.Cargar();
+    private static Programa P(string id) => Motor.Catalogo.First(p => p.Id == id);
+
+    [Fact]
+    public void Estan_las_fuentes_nombradas_en_el_convenio_con_programas_verificados()
+    {
+        foreach (var entidad in new[] { "FOSIS", "INDAP", "ProChile", "Municipalidad de Providencia" })
+            Assert.Contains(Motor.Catalogo, p => p.Entidad == entidad);
+        Assert.Equal(28, Motor.Catalogo.Count);
+    }
+
+    [Fact]
+    public void Una_persona_con_negocio_formalizado_cumple_las_reglas_medibles_de_Emprendamos()
+    {
+        var perfil = new Perfil().Con("iniciado_actividades", true).Con("edad", 35);
+        Assert.Equal(Veredicto.Cumple, Motor.Evaluar(P("fosis-emprendamos"), perfil).Veredicto);
+        var sinInicio = new Perfil().Con("iniciado_actividades", false).Con("edad", 35);
+        Assert.Equal(Veredicto.NoCumple, Motor.Evaluar(P("fosis-emprendamos"), sinInicio).Veredicto);
+    }
+
+    [Fact]
+    public void Un_programa_sin_requisitos_medibles_no_se_descarta_y_tiene_afinidad_completa()
+    {
+        var r = Motor.Evaluar(P("providencia-comunidad-emprendepro"), new Perfil());
+        Assert.Equal(Veredicto.Cumple, r.Veredicto);
+        Assert.Equal(100, r.Afinidad);
+    }
+
+    [Fact]
+    public void Las_convocatorias_ya_cerradas_se_informan_como_cerradas_con_su_fecha()
+    {
+        var hoy = new DateOnly(2026, 10, 20);
+        Assert.Equal(EstadoPostulacion.Cerrada, P("fosis-emprendamos").Ventana!.Estado(hoy));
+        Assert.Equal(EstadoPostulacion.Cerrada, P("fosis-emprendamos-semilla").Ventana!.Estado(hoy));
+        Assert.Equal(EstadoPostulacion.Cerrada, P("prochile-concursos-exportacion").Ventana!.Estado(hoy));
+        Assert.Equal(EstadoPostulacion.Cerrada, P("providencia-revive-barrio-mujer-emprende").Ventana!.Estado(hoy));
+        Assert.Equal(EstadoPostulacion.Desconocida, P("indap-pdi").Ventana!.Estado(hoy)); // sin fechas oficiales: no se afirma nada
+    }
+
+    [Fact]
+    public void Los_programas_agricolas_de_INDAP_exigen_actividad_agroalimentaria()
+    {
+        var sinAgro = new Perfil().Con("sector_agroalimentario", false);
+        Assert.Equal(Veredicto.NoCumple, Motor.Evaluar(P("indap-pdi"), sinAgro).Veredicto);
+        Assert.Equal(Veredicto.Cumple, Motor.Evaluar(P("indap-pdi"), new Perfil().Con("sector_agroalimentario", true)).Veredicto);
+    }
+}

@@ -264,9 +264,9 @@ public class FuentesNuevasTests
     [Fact]
     public void Estan_las_fuentes_nombradas_en_el_convenio_con_programas_verificados()
     {
-        foreach (var entidad in new[] { "FOSIS", "INDAP", "ProChile", "Municipalidad de Providencia" })
+        foreach (var entidad in new[] { "FOSIS", "INDAP", "ProChile", "Municipalidad de Providencia", "GORE RM" })
             Assert.Contains(Motor.Catalogo, p => p.Entidad == entidad);
-        Assert.Equal(28, Motor.Catalogo.Count);
+        Assert.Equal(29, Motor.Catalogo.Count);
     }
 
     [Fact]
@@ -276,6 +276,15 @@ public class FuentesNuevasTests
         Assert.Equal(Veredicto.Cumple, Motor.Evaluar(P("fosis-emprendamos"), perfil).Veredicto);
         var sinInicio = new Perfil().Con("iniciado_actividades", false).Con("edad", 35);
         Assert.Equal(Veredicto.NoCumple, Motor.Evaluar(P("fosis-emprendamos"), sinInicio).Veredicto);
+    }
+
+    [Fact]
+    public void El_HUB_Metropolitano_del_GORE_RM_esta_y_no_se_presenta_como_fondo_de_dinero()
+    {
+        var p = P("gore-hub-metropolitano");
+        Assert.Equal("GORE RM", p.Entidad);
+        Assert.StartsWith("Sin aporte en dinero", p.MontoAprox);
+        Assert.Equal(Veredicto.Cumple, Motor.Evaluar(p, new Perfil()).Veredicto);
     }
 
     [Fact]

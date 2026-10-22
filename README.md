@@ -7,6 +7,28 @@ Responde a una empresa tres cosas: **a qué programas puede postular, cuáles le
 
 Se usa dentro de DataHub Providencia (herramienta «Diagnóstico») y también sirve por separado.
 
+## Alcance real del proyecto
+**Software libre bajo licencia [MIT](LICENSE)**: puedes usarlo, copiarlo, modificarlo y distribuirlo, también con fines comerciales, conservando el aviso de copyright. Es un proyecto independiente y comunitario de una persona; no es un producto oficial.
+
+**Qué es**
+- Una biblioteca .NET con un motor de reglas **determinista** (sin IA) y un **catálogo selectivo de 29 programas** de fomento y financiamiento (Sercotec, Corfo, FOSIS, ANID, FIA, ProChile, INDAP, Municipalidad de Providencia, GORE RM y Google), pensado para emprendedores y empresas de Providencia y de Chile.
+- Evalúa, con datos que entrega quien la usa, si una empresa **cumple, no cumple o falta confirmar** los requisitos medibles de cada programa, y explica qué le falta. Cada regla enlaza a su fuente oficial y cada programa tiene la fecha en que se revisó.
+- Se usa en producción dentro de [DataHub Providencia](https://hub-data.inge-innova.com) (herramienta «Diagnóstico»), pero funciona por separado.
+
+**Qué no es**
+- **No es oficial ni está afiliado** a Corfo, Sercotec, FOSIS, ANID, FIA, ProChile, INDAP, la Municipalidad de Providencia, el Gobierno Regional ni el Ministerio de Economía. Los nombres y contenidos de los programas pertenecen a sus instituciones.
+- **No garantiza nada**: orienta. Una empresa que «cumple» puede igual ser rechazada, y una que «no cumple» puede tener una excepción que las bases explican. Las bases oficiales vigentes mandan.
+- **No postula ni se conecta con los sistemas de las instituciones**, ni consulta registros de personas o empresas. El motor solo recibe los datos del perfil que le entrega quien lo usa.
+- **No es un directorio completo de la oferta del Estado.** [Chile Emprende](https://www.chileatiende.gob.cl/fichas/144389-chile-emprende), la plataforma del Ministerio de Economía, reúne más de cien instrumentos y es más amplia. Este proyecto es más acotado a propósito: cubre menos programas, pero con reglas verificables, fuente por regla y el estado «por confirmar» cuando falta un dato. Es un complemento, no un reemplazo.
+
+**Límites que debes conocer**
+- El catálogo es **selectivo**: se incluyen programas cuyos requisitos se pueden medir con el perfil y confirmar en una fuente oficial. Los que no cumplen eso quedan fuera (ver «Estado»).
+- Solo se evalúan los requisitos que el perfil puede medir. **No se evalúan** el aporte propio, el foco regional ni los criterios de puntaje de cada concurso.
+- Los plazos y requisitos cambian en cada convocatoria. El catálogo lo mantiene una persona, de forma manual: cada programa lleva su fecha de revisión y una alerta semanal avisa cuando una revisión está por cumplir un año, pero **puede estar desactualizado** entre revisiones.
+- Se aceptan correcciones: si ves una regla o un plazo desactualizado, abre un *issue* con el enlace a la fuente actual (ver [CONTRIBUTING.md](CONTRIBUTING.md)).
+
+*English summary:* open-source (MIT) deterministic eligibility engine and a curated catalog of 29 Chilean funding programs, used in production in DataHub Providencia. It guides, it does not guarantee; it is independent and not affiliated with any of the institutions it describes. It is narrower than the official [Chile Emprende](https://www.chileatiende.gob.cl/fichas/144389-chile-emprende) portal by design: fewer programs, but machine-checkable rules with an official source for each one.
+
 ## Cómo funciona
 - **Sin IA y sin llamadas externas**: el mismo perfil da siempre el mismo resultado.
 - Cada programa es un dato en `src/Elegibilidad/Catalogo/fondos.json`: sus reglas, la **fuente oficial** de cada regla y la **fecha en que se revisó**.
@@ -67,7 +89,9 @@ Los porcentajes de aporte propio y el foco regional están en las bases de cada 
 Este proyecto **orienta, no garantiza**. Los requisitos vienen de páginas públicas de cada programa y cambian en cada convocatoria; el resultado del motor no asegura que una postulación sea admisible ni constituye asesoría. Verifica siempre las bases oficiales vigentes antes de postular. Cada regla indica su fuente y cada programa su fecha de revisión.
 
 ## Contribuir y seguridad
+La rama `main` está protegida: todo cambio entra por *pull request* y lo aprueba el propietario del proyecto.
+
 Ver [CONTRIBUTING.md](CONTRIBUTING.md), [CODE_OF_CONDUCT.md](CODE_OF_CONDUCT.md) y [SECURITY.md](SECURITY.md). Historial de cambios en [CHANGELOG.md](CHANGELOG.md).
 
 ## Licencia
-[MIT](LICENSE) © 2026 Jorge Luis Saraiva Ruas ([@saraivaruas](https://github.com/saraivaruas)), propietario y autor del proyecto. Los datos del catálogo resumen información pública de Sercotec, Corfo, ANID, FIA y Google; los nombres de los programas pertenecen a sus respectivas instituciones, con las que este proyecto no tiene relación.
+[MIT](LICENSE) © 2026 Jorge Luis Saraiva Ruas ([@saraivaruas](https://github.com/saraivaruas)), propietario y autor del proyecto. La licencia MIT cubre el código y el catálogo de este repositorio. Los datos del catálogo resumen información pública de Sercotec, Corfo, FOSIS, ANID, FIA, ProChile, INDAP, la Municipalidad de Providencia, el GORE RM y Google, siempre con enlace a la fuente; los nombres, marcas y textos oficiales de los programas pertenecen a sus respectivas instituciones, con las que este proyecto no tiene relación.

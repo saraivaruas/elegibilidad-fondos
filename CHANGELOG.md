@@ -4,6 +4,12 @@ Propietario y autor: Jorge Luis Saraiva Ruas ([@saraivaruas](https://github.com/
 
 Formato basado en [Keep a Changelog](https://keepachangelog.com/es-ES/1.1.0/); versiones según [SemVer](https://semver.org/lang/es/).
 
+## [0.5.1] - 2026-10-22
+### Documentación
+- README: sección «Alcance real del proyecto» (software libre MIT, qué es, qué no es, límites conocidos y resumen en inglés), aclarando que es independiente, que orienta y no garantiza, y cómo se relaciona con Chile Emprende.
+- Licencia: la nota de datos ahora nombra a todas las instituciones del catálogo.
+- CONTRIBUTING y README: `main` está protegida y todo cambio se aprueba por *pull request*.
+
 ## [0.5.0] - 2026-10-22
 ### Agregado
 - Validación del catálogo al cargarlo: campo de perfil desconocido (`Perfil.CamposConocidos`), programa o regla repetidos, operador desconocido y fecha de revisión inválida.

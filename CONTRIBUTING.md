@@ -21,6 +21,6 @@ Abre un *issue* con el programa, la regla, el enlace a la fuente actual y qué d
 ```bash
 dotnet test
 ```
-Debe pasar todo. Envía un *pull request* pequeño y descrito: qué cambia y por qué. Al enviarlo aceptas que tu aporte se publique bajo la licencia MIT del proyecto.
+Debe pasar todo. Envía un *pull request* pequeño y descrito: qué cambia y por qué. La rama `main` está protegida: el propietario del proyecto revisa y aprueba cada cambio, y el CI debe estar en verde. Al enviarlo aceptas que tu aporte se publique bajo la licencia MIT del proyecto.
 
 Ver también el [código de conducta](CODE_OF_CONDUCT.md).

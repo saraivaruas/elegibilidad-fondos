@@ -16,6 +16,11 @@ Se usa dentro de DataHub Providencia (herramienta «Diagnóstico») y también s
 - Una regla puede aplicar solo en ciertos casos (`cuando`), por ejemplo las ventas mínimas de Crece según la antigüedad.
 - **Plazo de postulación**: cada programa trae una `Ventana` (permanente, por fechas o consultada a la fuente). `CalendarioSercotec` lee el calendario público de Sercotec y `ConvocatoriasFia` la API pública de convocatorias de FIA (fechas reales y enlace de postulación) y entrega, por programa, si hay convocatorias abiertas con el enlace exacto de «Postular»; si no se pudo consultar, el estado es «desconocido», nunca «cerrado».
 - **Texto oficial dentro de la aplicación**: `PaginaOficial` (Sercotec y Corfo) y `ConvocatoriasFia` entregan los apartados oficiales ya en texto plano. Los sitios oficiales no permiten mostrarse dentro de otra página (X-Frame-Options / frame-ancestors, también Corfo), por eso se lee el contenido en el servidor y solo el envío de la postulación se hace en el sitio de cada institución.
+- **Catálogo validado al cargarlo**: un campo de perfil mal escrito, un programa o una regla repetidos, un operador desconocido o una fecha de revisión inválida detienen la carga con un mensaje claro (antes un error de tipeo dejaba el programa «por confirmar» para siempre sin avisar). La lista de campos válidos es `Perfil.CamposConocidos`.
+- **Lógica de tres valores (Kleene) también en las reglas condicionadas**: si falta el dato de la condición pero la regla ya se cumple por sí sola, el resultado es «cumple»; solo queda «por confirmar» si la regla tampoco se cumple o se desconoce.
+- **`VersionCatalogo`**: identificador de 12 caracteres del contenido exacto de `fondos.json`; permite saber con qué reglas se calculó un resultado guardado o impreso.
+- **`RevisionesPendientes(hoy, avisarDiasAntes)`**: programas cuya revisión contra las bases oficiales venció o vence pronto (365 días). El flujo semanal «Vigencia» de GitHub falla 30 días antes y avisa por correo.
+- **`SinRequisitosMedibles`**: un programa sin reglas (acompañamiento o servicios sin dinero) sale «cumple» con afinidad 100 solo porque no hay nada que comprobar; quien lo muestre debe decirlo así.
 - **Ficha completa** de cada programa (proceso, plazos, criterios de evaluación, gastos y enlace oficial) para mostrarla dentro de tu aplicación.
 
 ## Uso
@@ -26,7 +31,7 @@ foreach (var r in motor.Radar(perfil)) Console.WriteLine($"{r.Veredicto} {r.Afin
 ```
 Campos del perfil: `iniciado_actividades`, `capital_riesgo`, `al_dia`, `antiguedad_meses`, `ventas_uf`, `edad`, `es_mujer`, `persona_juridica`, `proyecto_innovacion`,
 `sector_agroalimentario`, `cursos_sercotec`, `cursos_ruta_digital`, `es_almacen`, `curso_almacenes`, `cliente_cdn_12m`, `sin_cotizaciones_6m`, `rubro_masculinizado`,
-`ventas_24m` y `segmento_modo_empleo` (los dos últimos los calcula quien arma el perfil). Un dato sin informar se deja en `null`.
+`ventas_24m` y `segmento_modo_empleo` (los dos últimos los calcula quien arma el perfil). Un dato sin informar se deja en `null`. Un campo nuevo se agrega a `Perfil.CamposConocidos` y a esta lista.
 
 ## Pruebas
 ```bash
@@ -36,7 +41,8 @@ dotnet test
 ## Mantener el catálogo
 1. Toda regla nueva lleva `fuente` (enlace oficial de las bases) y el programa su `revisado`.
 2. Lo que las bases no permitan comprobar se deja sin regla: no se inventa.
-3. Pasado un año de `revisado`, volver a comparar con las bases.
+3. Pasado un año de `revisado`, volver a comparar con las bases (el flujo «Vigencia» avisa 30 días antes).
+4. `dotnet test` valida el catálogo completo; un campo desconocido o un programa repetido lo detienen.
 
 ## Estado
 Catálogo de 29 programas con ficha, enlace de postulación y control de plazo, revisados entre el 13 y el 21 de octubre de 2026 contra sus páginas oficiales:

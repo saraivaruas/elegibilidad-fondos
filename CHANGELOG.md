@@ -4,6 +4,17 @@ Propietario y autor: Jorge Luis Saraiva Ruas ([@saraivaruas](https://github.com/
 
 Formato basado en [Keep a Changelog](https://keepachangelog.com/es-ES/1.1.0/); versiones según [SemVer](https://semver.org/lang/es/).
 
+## [0.5.0] - 2026-10-22
+### Agregado
+- Validación del catálogo al cargarlo: campo de perfil desconocido (`Perfil.CamposConocidos`), programa o regla repetidos, operador desconocido y fecha de revisión inválida.
+- `MotorElegibilidad.VersionCatalogo`: huella de 12 caracteres del contenido de `fondos.json`, estable entre sistemas operativos.
+- `MotorElegibilidad.RevisionesPendientes(hoy, avisarDiasAntes)` y flujo semanal «Vigencia» en GitHub que avisa 30 días antes de que venza la revisión de un programa.
+- `ResultadoPrograma.SinRequisitosMedibles` para los programas sin reglas.
+- `CatalogoFondos.Compartido`: el catálogo cargado una sola vez por proceso (de solo lectura).
+### Cambiado
+- Reglas condicionadas (`cuando`) con lógica de tres valores de Kleene: con la condición desconocida, una regla que ya se cumple da «cumple» (antes quedaba «por confirmar»).
+- El CI normal excluye la prueba de vigencia (depende de la fecha, no del código).
+
 ## [0.4.0] - 2026-10-21
 ### Agregado
 - Catálogo ampliado de 20 a 29 programas, cada uno con ficha, enlace de postulación, plazo y reglas con su fuente oficial:

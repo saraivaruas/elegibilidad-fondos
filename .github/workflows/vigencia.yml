@@ -1,0 +1,16 @@
+name: Vigencia
+# Cada lunes comprueba que ninguna revisión contra las bases oficiales esté vencida ni venza en los próximos 30 días.
+# Si falla, GitHub avisa por correo: hay que volver a comparar ese programa con su página oficial y actualizar su fecha «revisado».
+on:
+  schedule:
+    - cron: "0 12 * * 1"
+  workflow_dispatch:
+jobs:
+  vigencia:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-dotnet@v4
+        with:
+          dotnet-version: 8.0.x
+      - run: dotnet test --nologo --filter "Category=Vigencia"

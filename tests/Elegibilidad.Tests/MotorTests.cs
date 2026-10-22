@@ -81,12 +81,12 @@ public class MotorTests
     [Fact]
     public void Regla_condicionada_aplica_solo_cuando_se_da_la_condicion()
     {
-        const string json = """[{"id":"x","nombre":"x","entidad":"x","descripcion":"x","url":"https://x","montoAprox":"x","comoPostular":"x","vigencia":"x","revisado":"2026-01-01","reglas":[{"id":"r","campo":"ventas","op":"gte","valor":200,"texto":"t","siFalla":"s","fuente":"https://x","cuando":{"campo":"meses","op":"gte","valor":12}}]}]""";
+        const string json = """[{"id":"x","nombre":"x","entidad":"x","descripcion":"x","url":"https://x","montoAprox":"x","comoPostular":"x","vigencia":"x","revisado":"2026-01-01","reglas":[{"id":"r","campo":"ventas_uf","op":"gte","valor":200,"texto":"t","siFalla":"s","fuente":"https://x","cuando":{"campo":"antiguedad_meses","op":"gte","valor":12}}]}]""";
         var m = MotorElegibilidad.DesdeJson(json);
         var p = m.Catalogo[0];
-        Assert.Equal(Veredicto.Cumple, m.Evaluar(p, new Perfil().Con("meses", 6).Con("ventas", 10)).Veredicto);      // no aplica
-        Assert.Equal(Veredicto.NoCumple, m.Evaluar(p, new Perfil().Con("meses", 12).Con("ventas", 10)).Veredicto);  // aplica y falla
-        Assert.Equal(Veredicto.PorConfirmar, m.Evaluar(p, new Perfil().Con("ventas", 10)).Veredicto);               // no se sabe si aplica
+        Assert.Equal(Veredicto.Cumple, m.Evaluar(p, new Perfil().Con("antiguedad_meses", 6).Con("ventas_uf", 10)).Veredicto);      // no aplica
+        Assert.Equal(Veredicto.NoCumple, m.Evaluar(p, new Perfil().Con("antiguedad_meses", 12).Con("ventas_uf", 10)).Veredicto);  // aplica y falla
+        Assert.Equal(Veredicto.PorConfirmar, m.Evaluar(p, new Perfil().Con("ventas_uf", 10)).Veredicto);               // no se sabe si aplica
     }
 
     [Theory]

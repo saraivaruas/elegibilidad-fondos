@@ -56,11 +56,28 @@ public record ResultadoPrograma(Programa Programa, Veredicto Veredicto, int Afin
 {
     /// <summary>Lo que le falta a la empresa para calificar (reglas que no cumple o que no se pudieron comprobar).</summary>
     public IEnumerable<ResultadoRegla> Faltantes => Reglas.Where(r => r.Veredicto != Veredicto.Cumple);
+
+    /// <summary>
+    /// true si el programa no tiene ninguna regla que se pueda medir con el perfil (por ejemplo, un servicio de acompañamiento sin dinero): su veredicto es «Cumple»
+    /// y su afinidad 100 solo porque no hay nada que comprobar, no porque la empresa haya demostrado algo. Quien muestre el resultado debe decirlo así.
+    /// </summary>
+    public bool SinRequisitosMedibles => Reglas.Count == 0;
 }
 
 /// <summary>Datos de la empresa contra los que se evalúa. Un valor ausente (null) significa «no se sabe»: la regla queda «por confirmar», nunca se supone.</summary>
 public class Perfil
 {
+    /// <summary>
+    /// Claves de perfil que el catálogo puede usar en sus reglas. El catálogo se valida contra esta lista al cargarse: una regla con un campo mal escrito
+    /// (por ejemplo «es_mujr») quedaría siempre «por confirmar» sin avisar. Un campo nuevo se agrega aquí y en el README.
+    /// </summary>
+    public static readonly IReadOnlySet<string> CamposConocidos = new HashSet<string>(StringComparer.Ordinal)
+    {
+        "iniciado_actividades", "capital_riesgo", "al_dia", "antiguedad_meses", "ventas_uf", "edad", "es_mujer", "persona_juridica", "proyecto_innovacion",
+        "sector_agroalimentario", "cursos_sercotec", "cursos_ruta_digital", "es_almacen", "curso_almacenes", "cliente_cdn_12m", "sin_cotizaciones_6m",
+        "rubro_masculinizado", "ventas_24m", "segmento_modo_empleo",
+    };
+
     private readonly Dictionary<string, double?> _valores = new(StringComparer.Ordinal);
     public Perfil Con(string campo, double? valor) { _valores[campo] = valor; return this; }
     public Perfil Con(string campo, bool? valor) { _valores[campo] = valor is null ? null : valor.Value ? 1 : 0; return this; }
@@ -75,19 +92,50 @@ public class MotorElegibilidad(IReadOnlyList<Programa> catalogo)
 {
     public IReadOnlyList<Programa> Catalogo { get; } = catalogo;
 
+    /// <summary>
+    /// Identificador corto (12 caracteres) del contenido exacto del catálogo con que se evaluó. Cambia con cualquier edición de fondos.json: sirve para saber, después,
+    /// con qué reglas se calculó un resultado guardado o impreso. Vacío si el motor no se creó desde un JSON.
+    /// </summary>
+    public string VersionCatalogo { get; init; } = "";
+
+    /// <summary>Días que dura una revisión contra las bases oficiales antes de que haya que repetirla.</summary>
+    public const int DiasVigenciaRevision = 365;
+
     public static MotorElegibilidad DesdeJson(string json)
     {
         var opciones = new JsonSerializerOptions { PropertyNameCaseInsensitive = true, Converters = { new JsonStringEnumConverter() } };
         var lista = JsonSerializer.Deserialize<List<Programa>>(json, opciones) ?? throw new InvalidDataException("El catálogo de fondos está vacío.");
+        var ids = new HashSet<string>(StringComparer.Ordinal);
         foreach (var p in lista)
         {
+            if (!ids.Add(p.Id)) throw new InvalidDataException($"Programa repetido en el catálogo: {p.Id}.");
+            if (!DateOnly.TryParse(p.Revisado, out _)) throw new InvalidDataException($"Fecha de revisión inválida en {p.Id}: «{p.Revisado}».");
             // Un programa sin requisitos que se puedan medir con el perfil (por ejemplo, uno de acompañamiento municipal sin dinero) puede tener la lista vacía: su ficha explica lo que se exige.
+            var reglas = new HashSet<string>(StringComparer.Ordinal);
             foreach (var r in p.Reglas)
+            {
+                if (!reglas.Add(r.Id)) throw new InvalidDataException($"Regla repetida en {p.Id}: {r.Id}.");
                 if (!Operadores.Contains(r.Op) || (r.Cuando is { } c && !Operadores.Contains(c.Op)))
                     throw new InvalidDataException($"Operador desconocido en {p.Id}/{r.Id}.");
+                if (!Perfil.CamposConocidos.Contains(r.Campo) || (r.Cuando is { } c2 && !Perfil.CamposConocidos.Contains(c2.Campo)))
+                    throw new InvalidDataException($"Campo de perfil desconocido en {p.Id}/{r.Id}: «{(Perfil.CamposConocidos.Contains(r.Campo) ? r.Cuando!.Campo : r.Campo)}».");
+            }
         }
-        return new MotorElegibilidad(lista);
+        // Los saltos de línea no cuentan: el mismo catálogo da la misma versión en Windows y en Linux.
+        var huella = Convert.ToHexString(System.Security.Cryptography.SHA256.HashData(System.Text.Encoding.UTF8.GetBytes(json.Replace("\r", ""))))[..12].ToLowerInvariant();
+        return new MotorElegibilidad(lista) { VersionCatalogo = huella };
     }
+
+    /// <summary>Un programa cuya revisión contra las bases oficiales vence (o venció) y hay que repetir.</summary>
+    public record RevisionPendiente(Programa Programa, DateOnly Vence, int DiasRestantes);
+
+    /// <summary>
+    /// Programas cuya revisión vence en <paramref name="avisarDiasAntes"/> días o menos (negativo en <c>DiasRestantes</c> = ya venció), de la más urgente a la menos.
+    /// Con <paramref name="avisarDiasAntes"/> = 0 solo salen los ya vencidos.
+    /// </summary>
+    public IReadOnlyList<RevisionPendiente> RevisionesPendientes(DateOnly hoy, int avisarDiasAntes = 0) =>
+        Catalogo.Select(p => { var vence = DateOnly.Parse(p.Revisado).AddDays(DiasVigenciaRevision); return new RevisionPendiente(p, vence, vence.DayNumber - hoy.DayNumber); })
+            .Where(x => x.DiasRestantes <= avisarDiasAntes).OrderBy(x => x.DiasRestantes).ThenBy(x => x.Programa.Nombre).ToList();
 
     private static readonly HashSet<string> Operadores = ["eq", "gte", "lte", "gt", "lt"];
 
@@ -98,15 +146,17 @@ public class MotorElegibilidad(IReadOnlyList<Programa> catalogo)
 
     public static Veredicto EvaluarRegla(Regla r, Perfil perfil)
     {
+        var v = perfil.Valor(r.Campo);
+        var propia = v is null ? Veredicto.PorConfirmar : Compara(v.Value, r.Op, r.Valor) ? Veredicto.Cumple : Veredicto.NoCumple;
         if (r.Cuando is { } c)
         {
             var dato = perfil.Valor(c.Campo);
-            if (dato is null) return Veredicto.PorConfirmar;
+            // Lógica de tres valores de Kleene: «si (condición) entonces regla». Con la condición sin saber, si la regla ya se cumple por sí sola el resultado es
+            // «cumple» sea cual sea la condición; solo si no se cumple o no se sabe queda «por confirmar». Así un dato que falta no esconde un resultado que ya es seguro.
+            if (dato is null) return propia == Veredicto.Cumple ? Veredicto.Cumple : Veredicto.PorConfirmar;
             if (!Compara(dato.Value, c.Op, c.Valor)) return Veredicto.Cumple; // la regla no aplica a este caso
         }
-        var v = perfil.Valor(r.Campo);
-        if (v is null) return Veredicto.PorConfirmar;
-        return Compara(v.Value, r.Op, r.Valor) ? Veredicto.Cumple : Veredicto.NoCumple;
+        return propia;
     }
 
     public ResultadoPrograma Evaluar(Programa p, Perfil perfil)

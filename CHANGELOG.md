@@ -4,6 +4,18 @@ Propietario y autor: Jorge Luis Saraiva Ruas ([@saraivaruas](https://github.com/
 
 Formato basado en [Keep a Changelog](https://keepachangelog.com/es-ES/1.1.0/); versiones según [SemVer](https://semver.org/lang/es/).
 
+## [0.4.0] - 2026-10-21
+### Agregado
+- Catálogo ampliado de 20 a 29 programas, cada uno con ficha, enlace de postulación, plazo y reglas con su fuente oficial:
+  - **FOSIS (3)**: Emprendamos (Básico y Avanzado), Emprendamos Semilla y Emprendamos Grupal (Región Metropolitana), con su plazo 2026 ya cerrado.
+  - **ProChile (1)**: concursos de promoción de exportaciones (Silvoagropecuario, Industrias Creativas y Servicios).
+  - **INDAP (2)**: Crédito de corto plazo y Programa de Desarrollo de Inversiones (PDI).
+  - **Municipalidad de Providencia (2)**: Comunidad EmprendePRO y Hub Providencia (capacitación, asesoría y ferias; sin aporte en dinero) y Revive Barrio · Mujer Emprende + PRO (fondo concursable).
+  - **GORE RM (1)**: HUB Metropolitano (talleres, asesorías, ruedas de negocios y espacios; sin aporte en dinero).
+- Pruebas de los programas nuevos (entidades presentes, reglas de Emprendamos, programas sin reglas y plazos cerrados); 39 pruebas en total.
+### Cambiado
+- Los programas sin aporte en dinero no llevan reglas de elegibilidad: las páginas oficiales no declaran requisitos y no se inventan.
+
 ## [0.3.0] - 2026-10-19
 ### Agregado
 - `PaginaOficial`: lee el texto oficial de la página de un programa de Sercotec o Corfo («¿Qué es?», «¿Quiénes pueden postular?», «Pasos de Postulación»…) para mostrarlo dentro de la aplicación; `Ficha.TextoOficialUrl` indica de dónde.

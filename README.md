@@ -2,7 +2,7 @@
 
 Proyecto de **Jorge Luis Saraiva Ruas** ([@saraivaruas](https://github.com/saraivaruas)) · MIT
 
-Motor de elegibilidad para fondos y programas de financiamiento en Chile (Corfo, Sercotec, ANID, FIA, GORE y otros).
+Motor de elegibilidad para fondos y programas de financiamiento en Chile (Corfo, Sercotec, ANID, FIA, FOSIS, ProChile, INDAP, GORE, Municipalidad de Providencia y otros).
 Responde a una empresa tres cosas: **a qué programas puede postular, cuáles le faltan por confirmar y qué le falta para calificar**.
 
 Se usa dentro de DataHub Providencia (herramienta «Diagnóstico») y también sirve por separado.
@@ -39,15 +39,21 @@ dotnet test
 3. Pasado un año de `revisado`, volver a comparar con las bases.
 
 ## Estado
-Catálogo de 20 programas con ficha, enlace de postulación y control de plazo, revisados el 19-oct-2026 contra sus páginas oficiales:
+Catálogo de 29 programas con ficha, enlace de postulación y control de plazo, revisados entre el 13 y el 21 de octubre de 2026 contra sus páginas oficiales:
 - **Sercotec (12)**: Capital Semilla Emprende, Abeja Emprende, Pioneras, Semilla Modo Empleo, Crece, Crece Sostenible, Digitaliza tu Almacén, Kit Digital, Pymes Globales, Negocios Digitales, MejoraNegocios, Promoción y canales.
 - **Corfo (4)**: Crédito MIPYME, Garantía Pro-Inversión, Crea y Valida, Súmate a Innovar.
 - **ANID (1)**: Startup Ciencia. **FIA (1)**: Proyectos de innovación (Línea 3). **Google (2)**: Start y Scale.
+- **FOSIS (3)**: Emprendamos (Básico y Avanzado), Emprendamos Semilla y Emprendamos Grupal (Región Metropolitana).
+- **ProChile (1)**: concursos de promoción de exportaciones. **INDAP (2)**: Crédito de corto plazo y Programa de Desarrollo de Inversiones (PDI).
+- **Municipalidad de Providencia (2)**: Comunidad EmprendePRO y Hub Providencia, y Revive Barrio · Mujer Emprende + PRO.
+- **GORE RM (1)**: HUB Metropolitano (talleres, asesorías, ruedas de negocios y espacios, sin aporte en dinero).
+
+Los programas sin aporte en dinero (Comunidad EmprendePRO y HUB Metropolitano) no traen reglas de elegibilidad: las páginas oficiales no declaran requisitos, y no se inventan. Varios programas de 2026 figuran como «postulación cerrada» según su plazo oficial (FOSIS, ProChile, Revive Barrio).
 
 Quedan fuera, a propósito o por falta de datos confiables:
 - Programas de organizaciones (barrios comerciales, ferias libres, gremios, cooperativas): la audiencia no es una empresa.
 - ANID IDeA: sus beneficiarias son universidades y entidades sin fines de lucro.
-- Semilla de Asignación Flexible (Corfo) y los fondos de los gobiernos regionales (GORE): las bases cambian por convocatoria y región y no se pudieron confirmar.
+- Semilla de Asignación Flexible (Corfo) y los fondos concursables de los gobiernos regionales (GORE): las bases cambian por convocatoria y región y no se pudieron confirmar. Del GORE RM solo se incluye el HUB Metropolitano, que es un servicio y no un concurso.
 
 Los porcentajes de aporte propio y el foco regional están en las bases de cada convocatoria, no en las fichas: el motor no los evalúa.
 

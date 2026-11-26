@@ -57,6 +57,21 @@ Campos del perfil: `iniciado_actividades`, `capital_riesgo`, `al_dia`, `antigued
 `sector_agroalimentario`, `cursos_sercotec`, `cursos_ruta_digital`, `es_almacen`, `curso_almacenes`, `cliente_cdn_12m`, `sin_cotizaciones_6m`, `rubro_masculinizado`,
 `ventas_24m` y `segmento_modo_empleo` (los dos últimos los calcula quien arma el perfil). Un dato sin informar se deja en `null`. Un campo nuevo se agrega a `Perfil.CamposConocidos` y a esta lista.
 
+Salida de ese ejemplo (primeras 8 líneas, catálogo 0.5.1, ejecutado el 25 de noviembre de 2026):
+
+```text
+Cumple 100% Comunidad EmprendePRO y Hub Providencia (capacitación, asesoría y ferias)
+Cumple 100% Concursos de promoción de exportaciones (Silvoagropecuario, Industrias Creativas y Servicios)
+Cumple 100% HUB Metropolitano (Gobierno de Santiago): talleres, asesorías, ruedas de negocios y espacios
+Cumple 100% Promoción y canales de comercialización
+NoCumple 20% Digitaliza tu Almacén
+NoCumple 0% Capital Abeja Emprende
+NoCumple 0% Capital Pioneras
+NoCumple 0% Capital Semilla Emprende
+```
+
+Los programas sin requisitos medibles aparecen como «Cumple 100%» solo porque no hay nada que comprobar (`SinRequisitosMedibles`).
+
 ## Pruebas
 ```bash
 dotnet test

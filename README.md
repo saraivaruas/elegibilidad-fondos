@@ -7,6 +7,8 @@ Responde a una empresa tres cosas: **a qué programas puede postular, cuáles le
 
 Se usa dentro de DataHub Providencia (herramienta «Diagnóstico») y también sirve por separado.
 
+![Cómo funciona: perfil, reglas con fuente oficial, motor determinista y resultado](docs/como-funciona.svg)
+
 ## Alcance real del proyecto
 **Software libre bajo licencia [MIT](LICENSE)**: puedes usarlo, copiarlo, modificarlo y distribuirlo, también con fines comerciales, conservando el aviso de copyright. Es un proyecto independiente y comunitario de una persona; no es un producto oficial.
 
@@ -54,6 +56,21 @@ foreach (var r in motor.Radar(perfil)) Console.WriteLine($"{r.Veredicto} {r.Afin
 Campos del perfil: `iniciado_actividades`, `capital_riesgo`, `al_dia`, `antiguedad_meses`, `ventas_uf`, `edad`, `es_mujer`, `persona_juridica`, `proyecto_innovacion`,
 `sector_agroalimentario`, `cursos_sercotec`, `cursos_ruta_digital`, `es_almacen`, `curso_almacenes`, `cliente_cdn_12m`, `sin_cotizaciones_6m`, `rubro_masculinizado`,
 `ventas_24m` y `segmento_modo_empleo` (los dos últimos los calcula quien arma el perfil). Un dato sin informar se deja en `null`. Un campo nuevo se agrega a `Perfil.CamposConocidos` y a esta lista.
+
+Salida de ese ejemplo (primeras 8 líneas, catálogo 0.5.1, ejecutado el 25 de noviembre de 2026):
+
+```text
+Cumple 100% Comunidad EmprendePRO y Hub Providencia (capacitación, asesoría y ferias)
+Cumple 100% Concursos de promoción de exportaciones (Silvoagropecuario, Industrias Creativas y Servicios)
+Cumple 100% HUB Metropolitano (Gobierno de Santiago): talleres, asesorías, ruedas de negocios y espacios
+Cumple 100% Promoción y canales de comercialización
+NoCumple 20% Digitaliza tu Almacén
+NoCumple 0% Capital Abeja Emprende
+NoCumple 0% Capital Pioneras
+NoCumple 0% Capital Semilla Emprende
+```
+
+Los programas sin requisitos medibles aparecen como «Cumple 100%» solo porque no hay nada que comprobar (`SinRequisitosMedibles`).
 
 ## Pruebas
 ```bash

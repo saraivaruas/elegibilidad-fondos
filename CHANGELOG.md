@@ -4,6 +4,12 @@ Propietario y autor: Jorge Luis Saraiva Ruas ([@saraivaruas](https://github.com/
 
 Formato basado en [Keep a Changelog](https://keepachangelog.com/es-ES/1.1.0/); versiones según [SemVer](https://semver.org/lang/es/).
 
+## [Sin publicar]
+
+### Documentación
+- README: salida real del ejemplo de uso.
+- README: diagrama de cómo funciona el motor.
+
 ## [0.5.1] - 2026-10-22
 ### Documentación
 - README: sección «Alcance real del proyecto» (software libre MIT, qué es, qué no es, límites conocidos y resumen en inglés), aclarando que es independiente, que orienta y no garantiza, y cómo se relaciona con Chile Emprende.

@@ -1,0 +1,23 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 960 230" width="960" height="230" role="img" aria-label="Un perfil se evalúa con reglas con fuente oficial y el motor responde Cumple, NoCumple o PorConfirmar" font-family="Segoe UI, Helvetica, Arial, sans-serif">
+<rect width="960" height="230" rx="12" fill="#ffffff" stroke="#d0d7de"/>
+<text x="20" y="36" font-size="19" font-weight="700" fill="#1f2328">Cómo funciona</text>
+<rect x="20.0" y="58" width="213.5" height="112" rx="10" fill="#eef5fd" stroke="#4592db"/>
+<text x="126.8" y="94" text-anchor="middle" font-size="15" font-weight="700" fill="#0b4a86">Perfil</text>
+<text x="126.8" y="123" text-anchor="middle" font-size="13" font-weight="400" fill="#1f2328">datos que entrega</text>
+<text x="126.8" y="143" text-anchor="middle" font-size="13" font-weight="400" fill="#1f2328">quien la usa</text>
+<path d="M237.5 114 h12 m-5 -5 l5 5 l-5 5" fill="none" stroke="#4592db" stroke-width="2"/>
+<rect x="255.5" y="58" width="213.5" height="112" rx="10" fill="#eef5fd" stroke="#4592db"/>
+<text x="362.2" y="94" text-anchor="middle" font-size="15" font-weight="700" fill="#0b4a86">Reglas</text>
+<text x="362.2" y="123" text-anchor="middle" font-size="13" font-weight="400" fill="#1f2328">cada una con su</text>
+<text x="362.2" y="143" text-anchor="middle" font-size="13" font-weight="400" fill="#1f2328">fuente oficial</text>
+<path d="M473.0 114 h12 m-5 -5 l5 5 l-5 5" fill="none" stroke="#4592db" stroke-width="2"/>
+<rect x="491.0" y="58" width="213.5" height="112" rx="10" fill="#eef5fd" stroke="#4592db"/>
+<text x="597.8" y="94" text-anchor="middle" font-size="15" font-weight="700" fill="#0b4a86">Motor</text>
+<text x="597.8" y="123" text-anchor="middle" font-size="13" font-weight="400" fill="#1f2328">determinista,</text>
+<text x="597.8" y="143" text-anchor="middle" font-size="13" font-weight="400" fill="#1f2328">sin IA</text>
+<path d="M708.5 114 h12 m-5 -5 l5 5 l-5 5" fill="none" stroke="#4592db" stroke-width="2"/>
+<rect x="726.5" y="58" width="213.5" height="112" rx="10" fill="#eef5fd" stroke="#4592db"/>
+<text x="833.2" y="94" text-anchor="middle" font-size="15" font-weight="700" fill="#0b4a86">Resultado</text>
+<text x="833.2" y="123" text-anchor="middle" font-size="13" font-weight="400" fill="#1f2328">Cumple · NoCumple</text>
+<text x="833.2" y="143" text-anchor="middle" font-size="13" font-weight="400" fill="#1f2328">PorConfirmar</text>
+<text x="20" y="204" font-size="13" fill="#57606a">Orienta, no garantiza: mandan las bases oficiales vigentes.</text></svg>

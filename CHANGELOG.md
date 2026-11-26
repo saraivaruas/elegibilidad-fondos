@@ -7,6 +7,7 @@ Formato basado en [Keep a Changelog](https://keepachangelog.com/es-ES/1.1.0/); v
 ## [Sin publicar]
 
 ### Documentación
+- README: salida real del ejemplo de uso.
 - README: diagrama de cómo funciona el motor.
 
 ## [0.5.1] - 2026-10-22

@@ -7,6 +7,8 @@ Responde a una empresa tres cosas: **a qué programas puede postular, cuáles le
 
 Se usa dentro de DataHub Providencia (herramienta «Diagnóstico») y también sirve por separado.
 
+![Cómo funciona: perfil, reglas con fuente oficial, motor determinista y resultado](docs/como-funciona.svg)
+
 ## Alcance real del proyecto
 **Software libre bajo licencia [MIT](LICENSE)**: puedes usarlo, copiarlo, modificarlo y distribuirlo, también con fines comerciales, conservando el aviso de copyright. Es un proyecto independiente y comunitario de una persona; no es un producto oficial.
 
